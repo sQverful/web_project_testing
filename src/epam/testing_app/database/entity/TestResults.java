@@ -47,4 +47,11 @@ public class TestResults extends Entity {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
+
+    @Override
+    public String toString() {
+        return "TestResults [id=" + getId() + ", result=" + result +
+                ", userId=" + userId + ", testId=" + testId +
+                ", createTime=" + createdOn + "]";
+    }
 }

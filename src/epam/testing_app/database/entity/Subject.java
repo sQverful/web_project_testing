@@ -21,7 +21,7 @@ public class Subject extends Entity {
     public static Subject createSubject(String nameEN, String nameUA, String descriptionEN, String descriptionUA, int adminId) {
         Subject subject = new Subject();
 
-        subject.setId(0L);
+        subject.setId(0);
         subject.setNameEN(nameEN);
         subject.setNameUA(nameUA);
         subject.setDescriptionEN(descriptionEN);
@@ -32,9 +32,9 @@ public class Subject extends Entity {
 
     @Override
     public String toString() {
-        return "ID [" + getId() + "] " + " NameUA [" + nameUA + "]" + " NameEN [" + nameEN + "]" +
-                " DescriptionUA [" + descriptionUA + "]" + " DescriptionEN [" + descriptionEN + "]" +
-                " AdminID [" + adminId + "]" + " CreateTime [" + createdOn + "]";
+        return "Subject [id=" + getId() + ", nameUA=" + nameUA + ", nameEN=" + nameEN + "," +
+                " descriptionUA=" + descriptionUA + ", descriptionEN=" + descriptionEN + "," +
+                " adminID=" + adminId + ", createTime=" + createdOn + "]";
     }
 
     public String getNameEN() {

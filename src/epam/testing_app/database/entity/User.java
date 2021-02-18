@@ -23,13 +23,13 @@ public class User extends Entity {
     public static User createUser(String login, String name, String surname, String email,
                                   String password, boolean blocked, int roleId) {
         User user = new User();
-        user.setId(null);
+        user.setId(0);
         user.setLogin(login);
         user.setName(name);
         user.setSurname(surname);
         user.setEmail(email);
         user.setPassword(password);
-        user.setBlocked(false);
+        user.setBlocked(blocked);
         user.setRoleId(roleId);
         return user;
     }
@@ -99,8 +99,8 @@ public class User extends Entity {
     }
 
     public String toString() {
-        return "ID [" + getId() + "]" + " Login [" + login + "]" + " Name [" + name + "]" + " Surname [" + surname + "]" +
-                " Email [" + email + "]" + " Blocked [" + blocked + "]" + " RoleID [" + roleId + "]" + " CreateTime [" + createTime + "]";
+        return "User [id=" + getId() + ", login=" + login + ", name=" + name + ", surname=" + surname + ", email=" + email + ", blocked=" + blocked
+                + ", roleID=" + roleId + ", createTime=" + createTime + "]";
     }
 
     @Override
@@ -115,4 +115,5 @@ public class User extends Entity {
     public int hashCode() {
         return 0;
     }
+
 }

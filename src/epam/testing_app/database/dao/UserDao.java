@@ -4,6 +4,8 @@ import epam.testing_app.database.DBManager;
 import epam.testing_app.database.entity.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Data access object for User entity
@@ -12,6 +14,9 @@ import java.sql.*;
  */
 public class UserDao {
 
+    private static final String SQL_FIND_ALL_USERS =
+            "SELECT * FROM user";
+
     private static final String SQL_FIND_USER_BY_LOGIN =
             "SELECT * FROM user WHERE login=?";
 
@@ -19,12 +24,42 @@ public class UserDao {
             "SELECT * FROM user WHERE id=?";
 
     private static final String SQL_UPDATE_USER =
-            "UPDATE user SET password=?, name=?, surname=?, email=?"+
+            "UPDATE user SET password=?, name=?, surname=?, email=?, blocked=?, role_id=?"+
                     "	WHERE id=?";
+
     private static final String SQL_INSERT_NEW_USER = "INSERT INTO user" +
             "(id, login, name, surname, email, password, create_time, blocked, role_id)" +
             "VALUES(?, ?, ?, ?, ?, ?, now(), ?, ?)";
 
+    private static final String SQL_DELETE_USER = "DELETE FROM user WHERE id=?";
+
+
+    public List<User> findAllUsers() {
+        List<User> users = new ArrayList<>();
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        UserMapper mapper = new UserMapper();
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(SQL_FIND_ALL_USERS);
+
+            while (rs.next()) {
+                users.add(mapper.mapRow(rs));
+            }
+
+            stmt.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        }
+
+        return users;
+    }
 
     public boolean insertUser(User user) {
         boolean res = false;
@@ -59,6 +94,7 @@ public class UserDao {
 
 
             pstmt.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -66,7 +102,7 @@ public class UserDao {
         }
         return res;
     }
-    public User getUserById(Long id) {
+    public User getUserById(int id) {
         User user = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -76,7 +112,7 @@ public class UserDao {
             con = DBManager.getInstance().getConnection();
             UserMapper mapper = new UserMapper();
             pstmt = con.prepareStatement(SQL_FIND_USER_BY_ID);
-            pstmt.setLong(1, id);
+            pstmt.setInt(1, id);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -85,12 +121,10 @@ public class UserDao {
 
             rs.close();
             pstmt.close();
-
+            con.close();
         } catch (SQLException e) {
             DBManager.getInstance().rollbackAndClose(con);
             e.printStackTrace();
-        } finally {
-            DBManager.getInstance().commitAndClose(con);
         }
         return user;
     }
@@ -114,28 +148,43 @@ public class UserDao {
 
             rs.close();
             pstmt.close();
-
+            con.close();
         } catch (SQLException e) {
             DBManager.getInstance().rollbackAndClose(con);
             e.printStackTrace();
         } finally {
-            DBManager.getInstance().commitAndClose(con);
+            return user;
         }
-        return user;
     }
 
 
+    public boolean deleteUserById(int id) {
+        boolean result = false;
+        PreparedStatement pstmt = null;
+        Connection con = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_DELETE_USER);
+            pstmt.setInt(1, id);
+            if (pstmt.executeUpdate() > 0) {
+                result = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
     public void updateUser(User user) {
         Connection con = null;
 
         try {
             con = DBManager.getInstance().getConnection();
             updateUser(con, user);
+            con.close();
         } catch (SQLException e) {
             DBManager.getInstance().rollbackAndClose(con);
             e.printStackTrace();
         } finally {
-            DBManager.getInstance().commitAndClose(con);
         }
     }
 
@@ -147,6 +196,9 @@ public class UserDao {
         pstmt.setString(k++, user.getName());
         pstmt.setString(k++, user.getSurname());
         pstmt.setString(k++, user.getEmail());
+        pstmt.setBoolean(k++, user.isBlocked());
+        pstmt.setInt(k++, user.getRoleId());
+        pstmt.setInt(k++, user.getId());
         pstmt.executeUpdate();
         pstmt.close();
     }
@@ -159,7 +211,7 @@ public class UserDao {
         public User mapRow(ResultSet rs) {
                 User user = new User();
                 try {
-                    user.setId(rs.getLong(DBFields.ENTITY_ID));
+                    user.setId(rs.getInt(DBFields.ENTITY_ID));
                     user.setLogin(rs.getString(DBFields.USER_LOGIN));
                     user.setName(rs.getString(DBFields.USER_NAME));
                     user.setSurname(rs.getString(DBFields.USER_SURNAME));
@@ -179,7 +231,13 @@ public class UserDao {
 
         UserDao userDao = new UserDao();
 
-        System.out.println(userDao.getUserByLogin("test"));
+//       System.out.println(userDao.insertUser(User.createUser("test12", "test", "test",
+//               "test12@test.com", "test", true, 1)));
+        System.out.println(userDao.deleteUserById(17));
+
+//        System.out.println(userDao.insertUser(User.createUser("admin", "admin", "admin",
+//                "admin@test.com", "admin", false, 2)));
+
 
 
     }

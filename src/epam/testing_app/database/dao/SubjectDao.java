@@ -4,6 +4,8 @@ import epam.testing_app.database.DBManager;
 import epam.testing_app.database.entity.Subject;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Data access object for Subject
@@ -11,6 +13,9 @@ import java.sql.*;
  * @author V.Dorosh
  */
 public class SubjectDao {
+
+    private static final String SQL_FIND_ALL_SUBJECTS =
+            "SELECT * FROM subject";
 
     private static final String SQL_FIND_SUBJECT_BY_NAME_UA =
             "SELECT * FROM subject WHERE name_ua=?";
@@ -27,8 +32,36 @@ public class SubjectDao {
     private static final String SQL_INSERT_NEW_SUBJECT = "INSERT INTO subject" +
             "(id, name_ua, name_en, description_ua, description_en, admin_id, create_time)" +
             "VALUES(?, ?, ?, ?, ?, ?, now())";
+
     private static final String SQL_DELETE_BY_ID = "DELETE FROM subject WHERE id=?";
 
+    public List<Subject> findAllSubjects() {
+        List<Subject> subjects = new ArrayList<>();
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        SubjectMapper mapper = new SubjectMapper();
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(SQL_FIND_ALL_SUBJECTS);
+
+            while (rs.next()) {
+                subjects.add(mapper.mapRow(rs));
+            }
+
+            stmt.close();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(con);
+        }
+
+        return subjects;
+    }
+    
     public boolean deleteSubjectById(int id) {
         boolean result = false;
         Connection con = null;
@@ -126,7 +159,7 @@ public class SubjectDao {
             SubjectMapper subjectMapper = new SubjectMapper();
 
             if (rs.next()) {
-                subject = (Subject) subjectMapper.mapRow(rs);
+                subject = subjectMapper.mapRow(rs);
             }
 
             rs.close();
@@ -207,13 +240,13 @@ public class SubjectDao {
     /**
      * Extracts a subject from the result set row
      */
-    private static class SubjectMapper implements EntityMapper {
+    private static class SubjectMapper implements EntityMapper<Subject> {
         @Override
-        public Object mapRow(ResultSet rs) {
+        public Subject mapRow(ResultSet rs) {
             Subject subject = new Subject();
 
             try {
-                subject.setId(rs.getLong(DBFields.ENTITY_ID));
+                subject.setId(rs.getInt(DBFields.ENTITY_ID));
                 subject.setNameUA(rs.getString(DBFields.SUBJECT_NAME_UA));
                 subject.setNameEN(rs.getString(DBFields.SUBJECT_NAME_EN));
                 subject.setDescriptionUA(rs.getString(DBFields.SUBJECT_DESCRIPTION_UA));
@@ -227,18 +260,5 @@ public class SubjectDao {
         }
     }
 
-    public static void main(String[] args) {
-        SubjectDao subjectDao = new SubjectDao();
-
-
-      //  System.out.println(subjectDao.getSubjectByNameUa("ПредметТест"));
-
-      //  Subject subject = Subject.createSubject("SubjectTest", "ПредметЗМІНИ", "DescTest",
-        // "ОписТест", 2);
-      //  subjectDao.insertSubject(subject);
-        //System.out.println(subjectDao.updateSubject(subject));
-        //System.out.println(subjectDao.deleteSubjectById(1));
-
-    }
 }
 

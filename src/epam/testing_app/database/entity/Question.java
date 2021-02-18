@@ -36,4 +36,10 @@ public class Question extends Entity {
     public void setTestId(Long testId) {
         this.testId = testId;
     }
+
+    @Override
+    public String toString() {
+        return "Question [id=" + getId() + ", questionEN=" + questionEN +
+                ", questionUA" + questionUA + ", testID=" + testId + "]";
+    }
 }

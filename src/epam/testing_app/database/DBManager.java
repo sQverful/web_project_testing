@@ -40,9 +40,9 @@ public class DBManager {
     public Connection getConnection() {
         Connection con = null;
         try {
-
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(getConnectionProperty());
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
            // log.error("Cannot get a connection", e);
         }
         return con;
@@ -53,14 +53,17 @@ public class DBManager {
      * @return A DB connection URL
      */
     public String getConnectionProperty() {
-        Properties properties = new Properties();
-        try (FileInputStream fileInputStream = new FileInputStream("src/app.properties")) {
-            properties.load(fileInputStream);
-            return properties.getProperty("connection.url");
-        } catch (IOException exception) {
-            exception.getMessage();
-            return null;
-        }
+//        Properties properties = new Properties();
+//        try (FileInputStream fileInputStream = new FileInputStream("src/app.properties")) {
+//            properties.load(fileInputStream);
+//            return properties.getProperty("connection.url");
+//        } catch (IOException exception) {
+//            exception.getMessage();
+//            return null;
+//        }
+
+        //TODO: чомусь не находить проперті в app.properties коли тестуєш через томкет
+        return "jdbc:mysql://127.0.0.1:3306/testing?useSSL=false&user=root&password=root&useUnicode=true&serverTimezone=UTC";
     }
 
 
@@ -94,6 +97,9 @@ public class DBManager {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
     }
 
 

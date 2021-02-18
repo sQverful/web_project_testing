@@ -221,7 +221,7 @@ public class TestDao {
             Test test = new Test();
 
             try {
-                test.setId(rs.getLong(DBFields.ENTITY_ID));
+                test.setId(rs.getInt(DBFields.ENTITY_ID));
                 test.setNameUA(rs.getString(DBFields.TEST_NAME_UA));
                 test.setNameEN(rs.getString(DBFields.TEST_NAME_EN));
                 test.setComplexity(rs.getInt(DBFields.TEST_COMPLEXITY));
@@ -245,16 +245,14 @@ public class TestDao {
 
         TestDao testDao = new TestDao();
 
-  //      System.out.println(testDao.insertNewTest(Test.createTest("test", "тест",
- //               "test", "тест", 4, false, 50, 0, 100)));
-
-        Test test = new Test();
-        test = Test.createTest("trial", "трайл", "trialDesc", "трайлОпис",
-                4, false, 55, 0, 50);
-        test.setId(1L);
-       // System.out.println(testDao.updateSubject(test));
-        //System.out.println(testDao.getTestByNameEn("трайл"));
-        System.out.println(testDao.getTestById(1L));
+//  //      System.out.println(testDao.insertNewTest(Test.createTest("test", "тест",
+// //               "test", "тест", 4, false, 50, 0, 100)));
+//
+//        Test test = new Test();
+//        test = Test.createTest("trial", "трайл", "trialDesc", "трайлОпис",
+//                4, false, 55, 0, 50);
+//       // System.out.println(testDao.updateSubject(test));
+//        //System.out.println(testDao.getTestByNameEn("трайл"));
 
     }
 }

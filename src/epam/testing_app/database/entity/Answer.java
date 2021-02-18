@@ -44,4 +44,11 @@ public class Answer extends Entity {
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
+
+    @Override
+    public String toString() {
+        return "Answer [id=" + getId() + ", answerEN=" + answerEN +
+                ", answerUA=" + answerUA + ", correct=" + correct +
+                ", questionId=" + questionId + "]";
+    }
 }

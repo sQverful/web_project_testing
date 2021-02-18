@@ -26,7 +26,7 @@ public class Test extends Entity{
     public static Test createTest(String nameEN, String nameUA, String descriptionEN, String descriptionUA, int subjectId,
                 boolean blocked, int complexity, int requestsQuantity, int timer) {
         Test test = new Test();
-        test.setId(0L);
+        test.setId(0);
         test.setNameEN(nameEN);
         test.setNameUA(nameUA);
         test.setDescriptionEN(descriptionEN);
@@ -42,9 +42,9 @@ public class Test extends Entity{
 
     @Override
     public String toString() {
-        return "ID [" + getId() + "]" + " NameEN [" + nameEN +  "]" + " NameUA [" + nameUA +  "]"
-                + " DescriptionEN [" + descriptionEN +  "]" + " DescriptionUA [" + descriptionUA +  "]" +
-                " SubjectId [" + subjectId +  "]" + " Blocked [" + blocked +  "]" + " Complexity [" + complexity +  "]";
+        return "Test [id=" + getId() + ", nameEN=" + nameEN + ", nameUA=" + nameUA +  ","
+                + " descriptionEN=" + descriptionEN + ", descriptionUA=" + descriptionUA + "," +
+                " subjectId=" + subjectId + ", blocked=" + blocked +  ", complexity=" + complexity +  "]";
     }
 
     public String getNameEN() {
