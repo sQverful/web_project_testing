@@ -1,5 +1,6 @@
 # web_project_testing
 Короткий опис проєкту.
+
 Студент реєструється в системі і після реєстрації може пройти один або кілька Тестів. В системі існує перелік тестів 
 з Предметів. Для переліку необхідно реалізувати:
 - вибір тестів з певного предмету;
@@ -23,7 +24,10 @@
 
 
 
+
+
 Brief description of the project.
+
 The student registers in the system and after registration can take one or more Tests. There is a list of tests in the system
 of Items. For the list it is necessary to implement:
 - selection of tests in a particular subject;
