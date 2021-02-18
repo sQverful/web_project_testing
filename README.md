@@ -48,3 +48,12 @@ When creating a test, the administrator:
 The question may have one or more correct answers. The result of passing the test is the percentage of questions
 to which the student answered correctly in relation to the total number of questions (it is considered that the student is correct
 answered the question if his answer coincides exactly with the correct answers).
+
+# Technologies stack
+- Java 8
+- Maven
+- Junit 4.11.
+- Tomcat 8.5.63
+- Servlets + JSP
+- JDBC (mysql-connector-java)
+- Front-end is taken from open-source solution developed by Ankit Hingarajiya (https://github.com/dropways)
