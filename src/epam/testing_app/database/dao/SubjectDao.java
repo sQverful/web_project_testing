@@ -53,10 +53,11 @@ public class SubjectDao {
 
             stmt.close();
             rs.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBManager.getInstance().commitAndClose(con);
+//            DBManager.getInstance().commitAndClose(con);
         }
 
         return subjects;
@@ -74,6 +75,8 @@ public class SubjectDao {
             if (pstmt.executeUpdate() > 0) {
                 result = true;
             }
+            con.close();
+            pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,10 +91,11 @@ public class SubjectDao {
         try {
             con = DBManager.getInstance().getConnection();
             result = updateSubject(con, subject);
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBManager.getInstance().commitAndClose(con);
+//            DBManager.getInstance().commitAndClose(con);
         }
         return result;
     }
@@ -258,6 +262,12 @@ public class SubjectDao {
             }
             return subject;
         }
+    }
+
+    public static void main(String[] args) {
+        new SubjectDao().deleteSubjectById(5);
+        List<Subject> subjects = new SubjectDao().findAllSubjects();
+        System.out.println(subjects);
     }
 
 }

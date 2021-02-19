@@ -191,10 +191,17 @@
                                     <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                         <i class="dw dw-more"></i>
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a class="dropdown-item" href="controller?command=showEditForm&id=${user.id}"><i class="dw dw-edit2"></i> Edit</a>
-                                        <a class="dropdown-item" href="controller?command=deleteUser&id=${user.id}"><i class="dw dw-delete-3"></i> Delete</a>
-                                    </div>
+                                    <form action="controller" method="post" class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                        <div class="dropdown-item">
+                                        <a class="btn" href="controller?command=showUserEditForm&id=${user.id}"><i class="dw dw-edit2"></i> Edit</a>
+                                        </div>
+                                        <input type="hidden" name="id" value="${user.id}">
+                                        <input type="hidden" name="command" value="deleteUser">
+                                        <div class="dropdown-item">
+                                            <i class="dw dw-delete-3"></i>
+                                        <input class="btn" type="submit" value="Delete">
+                                        </div>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

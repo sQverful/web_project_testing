@@ -1,5 +1,9 @@
 package epam.testing_app.webControllers.command;
 
+import epam.testing_app.webControllers.command.SubjectManagerCommands.AddNewSubjectCommand;
+import epam.testing_app.webControllers.command.SubjectManagerCommands.DeleteSubjectCommand;
+import epam.testing_app.webControllers.command.SubjectManagerCommands.ShowSubjectEditFormCommand;
+import epam.testing_app.webControllers.command.SubjectManagerCommands.SubjectListCommand;
 import epam.testing_app.webControllers.command.UserManagerCommands.*;
 
 import java.util.Map;
@@ -16,14 +20,20 @@ public class CommandContainer {
         commands.put("login", new LoginCommand());
      //   commands.put("logout", new LogoutCommand());
         commands.put("noCommand", new NoCommand());
+
+        //User commands
         commands.put("addNewUser", new AddNewUserCommand());
         commands.put("deleteUser", new DeleteUserCommand());
-        commands.put("showEditForm", new ShowEditFormCommand());
+        commands.put("showUserEditForm", new ShowUserEditFormCommand());
         commands.put("updateUser", new UpdateUserCommand());
+        commands.put("userList", new UserListCommand());
         //   commands.put("updateSettings", new UpdateSettingsCommand());
 
-     //   // client commands
-        commands.put("userList", new UserListCommand());
+//        Subject commands
+        commands.put("subjectList", new SubjectListCommand());
+        commands.put("deleteSubject", new DeleteSubjectCommand());
+        commands.put("addNewSubject", new AddNewSubjectCommand());
+        commands.put("showSubjectEditForm", new ShowSubjectEditFormCommand());
 
      //   // admin commands
      //   commands.put("listOrders", new ListOrdersCommand());

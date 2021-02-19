@@ -1,4 +1,6 @@
 package epam.testing_app.database;
+import epam.testing_app.database.entity.Entity;
+import epam.testing_app.database.entity.User;
 import org.apache.log4j.Logger;
 
 import java.io.FileInputStream;
@@ -6,6 +8,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -99,7 +104,13 @@ public class DBManager {
         }
     }
 
-    public static void main(String[] args) {
+    public static class Int {
+        double test;
+        boolean bol;
+
+        public void badMethod() {
+            throw new Error();
+        }
     }
 
 
