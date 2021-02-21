@@ -24,7 +24,7 @@ public class Test extends Entity{
 
 
     public static Test createTest(String nameEN, String nameUA, String descriptionEN, String descriptionUA, int subjectId,
-                boolean blocked, int complexity, int requestsQuantity, int timer) {
+                boolean blocked, int complexity, int timer) {
         Test test = new Test();
         test.setId(0);
         test.setNameEN(nameEN);
@@ -34,7 +34,8 @@ public class Test extends Entity{
         test.setSubjectId(subjectId);
         test.setBlocked(blocked);
         test.setComplexity(complexity);
-
+        test.setTimer(timer);
+        
         return test;
 
     }

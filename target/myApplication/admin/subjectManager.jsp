@@ -128,43 +128,6 @@
 				</div>
 			</div>
 				<%--Modal window ends--%>
-			<!-- Default Basic Forms Start -->
-			<div class="pd-20 card-box mb-30">
-				<div class="clearfix">
-					<div class="pull-left">
-						<h4 class="text-blue h4">Adding new subject</h4>
-					</div>
-				</div>
-				<form accept-charset="UTF-8" action="addSubject" method="post" enctype="multipart/dorm-data">
-					<div class="form-group row">
-						<label class="col-sm-12 col-md-2 col-form-label">Name ua</label>
-						<div class="col-sm-12 col-md-10">
-							<input class="form-control" type="text" placeholder="Enter name in ua language" name="name_ua">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-12 col-md-2 col-form-label">Name eng</label>
-						<div class="col-sm-12 col-md-10">
-							<input class="form-control" placeholder="Enter name in eng language" type="text" name="name_en">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-12 col-md-2 col-form-label">Description ua</label>
-						<div class="col-sm-12 col-md-10">
-							<textarea class="form-control" placeholder="Enter description in ua" name="description_ua"></textarea>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-12 col-md-2 col-form-label">Description eng</label>
-						<div class="col-sm-12 col-md-10">
-							<textarea class="form-control" placeholder="Enter description in eng" name="description_en"></textarea>
-						</div>
-					</div>
-					<button type="submit" class="btn btn-primary">Add subject</button>
-				</form>
-			</div>
-
-
 				<!-- Simple Datatable start -->
 				<div class="card-box mb-30">
 					<div class="pd-20">

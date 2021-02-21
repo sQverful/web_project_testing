@@ -1,9 +1,8 @@
 package epam.testing_app.webControllers.command;
 
-import epam.testing_app.webControllers.command.SubjectManagerCommands.AddNewSubjectCommand;
-import epam.testing_app.webControllers.command.SubjectManagerCommands.DeleteSubjectCommand;
-import epam.testing_app.webControllers.command.SubjectManagerCommands.ShowSubjectEditFormCommand;
-import epam.testing_app.webControllers.command.SubjectManagerCommands.SubjectListCommand;
+import epam.testing_app.database.entity.Test;
+import epam.testing_app.webControllers.command.SubjectManagerCommands.*;
+import epam.testing_app.webControllers.command.TestManagerCommands.*;
 import epam.testing_app.webControllers.command.UserManagerCommands.*;
 
 import java.util.Map;
@@ -27,15 +26,23 @@ public class CommandContainer {
         commands.put("showUserEditForm", new ShowUserEditFormCommand());
         commands.put("updateUser", new UpdateUserCommand());
         commands.put("userList", new UserListCommand());
-        //   commands.put("updateSettings", new UpdateSettingsCommand());
 
 //        Subject commands
         commands.put("subjectList", new SubjectListCommand());
         commands.put("deleteSubject", new DeleteSubjectCommand());
         commands.put("addNewSubject", new AddNewSubjectCommand());
         commands.put("showSubjectEditForm", new ShowSubjectEditFormCommand());
+        commands.put("updateSubject", new UpdateSubjectCommand());
 
-     //   // admin commands
+//        Test commands
+        commands.put("testList", new TestListCommand());
+        commands.put("addNewTest", new AddNewTestCommand());
+        commands.put("showTestEditForm", new ShowTestEditFormCommand());
+        commands.put("updateTest", new UpdateTestCommand());
+        commands.put("deleteTest", new DeleteTestCommand());
+
+
+        //   // admin commands
      //   commands.put("listOrders", new ListOrdersCommand());
 
 //        log.debug("Command container was successfully initialized");

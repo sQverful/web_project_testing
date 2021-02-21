@@ -25,8 +25,10 @@ public class AddNewUserCommand extends Command {
         String surname = request.getParameter("surname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String blockedStr = request.getParameter("blocked");
-        boolean blocked = !(blockedStr.equals("null"));
+        boolean blocked = false;
+        if (request.getParameter("blocked") != null) {
+            blocked = true;
+        }
         int roleId = Integer.parseInt(request.getParameter("role_id"));
 
         User user = User.createUser(login, name, surname, email, password, blocked, roleId);

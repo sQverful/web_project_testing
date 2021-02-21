@@ -1,11 +1,11 @@
 package epam.testing_app.database.dao;
 
 import epam.testing_app.database.DBManager;
-import epam.testing_app.database.entity.Subject;
 import epam.testing_app.database.entity.Test;
-import epam.testing_app.database.entity.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,27 +27,56 @@ public class TestDao {
             "UPDATE test SET name_ua=?, name_en=?, complexity=?, blocked=?, timer=?, description_ua=?, description_en=?"+
                     " WHERE id=?";
     private static final String SQL_INSERT_NEW_TEST = "INSERT INTO test" +
-            "(id, name_ua, name_en, complexity, requests_quantity, blocked, timer, description_ua, description_en, subject_id, create_time)" +
-            "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
+            "(id, name_ua, name_en, complexity, blocked, timer, description_ua, description_en, subject_id, create_time)" +
+            "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
 
     private static final String SQL_DELETE_TEST_BY_ID = "DELETE FROM test WHERE id=?";
 
-    public boolean updateSubject(Test test) {
+    private static final String SQL_FIND_ALL_TESTS = "SELECT * FROM test";
+
+
+    public List<Test> findAllTests() {
+        List<Test> tests = new ArrayList<>();
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        TestMapper mapper = new TestMapper();
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(SQL_FIND_ALL_TESTS);
+
+            while (rs.next()) {
+                tests.add(mapper.mapRow(rs));
+            }
+
+            stmt.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        }
+
+        return tests;
+    }
+    public boolean updateTest(Test test) {
         boolean result = false;
         Connection con = null;
 
         try {
             con = DBManager.getInstance().getConnection();
-            result = updateSubject(con, test);
+            result = updateTest(con, test);
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBManager.getInstance().commitAndClose(con);
         }
         return result;
     }
 
-    public boolean updateSubject(Connection con, Test test) throws SQLException {
+    public boolean updateTest(Connection con, Test test) throws SQLException {
         boolean result = false;
         PreparedStatement pstmt = con.prepareStatement(SQL_UPDATE_TEST);
 
@@ -81,6 +110,8 @@ public class TestDao {
             if (pstmt.executeUpdate() > 0) {
                 result = true;
             }
+            con.close();
+            pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -110,7 +141,6 @@ public class TestDao {
             pstmt.setString(k++, test.getNameUA());
             pstmt.setString(k++, test.getNameEN());
             pstmt.setInt(k++, test.getComplexity());
-            pstmt.setNull(k++, Types.NULL);
             pstmt.setBoolean(k++, test.isBlocked());
             pstmt.setInt(k++, test.getTimer());
             pstmt.setString(k++, test.getDescriptionUA());
@@ -120,6 +150,9 @@ public class TestDao {
             if (pstmt.executeUpdate() > 0) {
                 result = true;
             }
+
+            pstmt.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -127,7 +160,7 @@ public class TestDao {
         return result;
     }
 
-    public Test getTestById(Long id) {
+    public Test getTestById(int id) {
         Test test = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -137,7 +170,7 @@ public class TestDao {
             con = DBManager.getInstance().getConnection();
             TestMapper mapper = new TestMapper();
             pstmt = con.prepareStatement(SQL_FIND_TEST_BY_ID);
-            pstmt.setLong(1, id);
+            pstmt.setInt(1, id);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -146,12 +179,12 @@ public class TestDao {
 
             rs.close();
             pstmt.close();
+            con.close();
 
         } catch (SQLException e) {
             DBManager.getInstance().rollbackAndClose(con);
             e.printStackTrace();
         } finally {
-            DBManager.getInstance().commitAndClose(con);
         }
         return test;
     }
@@ -244,6 +277,8 @@ public class TestDao {
     public static void main(String[] args) {
 
         TestDao testDao = new TestDao();
+        System.out.println(testDao.findAllTests());
+
 
 //  //      System.out.println(testDao.insertNewTest(Test.createTest("test", "тест",
 // //               "test", "тест", 4, false, 50, 0, 100)));

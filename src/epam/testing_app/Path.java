@@ -16,9 +16,12 @@ public class Path {
     public static final String PAGE_LIST_ORDERS = "/WEB-INF/jsp/admin/list_orders.jsp";
     public static final String PAGE_SETTINGS = "/WEB-INF/jsp/settings.jsp";
 
+    public static final String PAGE_ADMIN_TEST_LIST = "/admin/testManager.jsp";
+    public static final String PAGE_ADMIN_TEST_FORM_EDIT = "/admin/edit-test-form.jsp";
     // commands
     public static final String COMMAND_USER_LIST = "/controller?command=userList";
     public static final String COMMAND_SUBJECT_LIST = "/controller?command=subjectList";
+    public static final String COMMAND_TEST_LIST = "/controller?command=testList";
     public static final String COMMAND__LIST_ORDERS = "/controller?command=listOrders";
     public static final String COMMAND__LIST_MENU = "/controller?command=listMenu";
 }

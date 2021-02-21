@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
     <head>
         <!-- Basic Page Info -->
         <meta charset="utf-8">
@@ -92,15 +91,12 @@
                 <form  accept-charset="UTF-8" action="controller" method="post" enctype="multipart/dorm-data">
                     <input type="hidden" name="command" value="updateUser"/>
                     <input type="hidden" name="id" value="${user.id}"/>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Select role</label>
-                                <select class="custom-select2 form-control" name="role_id" style="width: 100%; height: 38px;">
-                                    <option value="1"<c:out value='${user.roleId==1 ? "selected" : ""}'/>> Student</option>
-                                    <option value="2"<c:out value='${user.roleId==2 ? "selected" : ""}'/>> Admin</option>
-                                </select>
-                            </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Role</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input class="form-control" value='${user.roleId==1 ? "student" : "admin"}' type="text" disabled="disabled">
+                            <input class="form-control" value='${user.roleId}' type="hidden" name="role_id">
                         </div>
                     </div>
 
@@ -137,7 +133,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Blocked</label>
                         <div class="col-sm-12 col-md-10">
-                            <input type="checkbox" class="switch-btn" data-color="#f56767" name="blocked" <c:out value='${user.blocked==true ? "checked" : ""}'/>>
+                            <input type="checkbox" class="switch-btn" data-color="#f56767" name="blocked" ${user.blocked==true ? "checked" : ""}>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Update user</button>

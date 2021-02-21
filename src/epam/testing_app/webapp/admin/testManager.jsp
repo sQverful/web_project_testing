@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,87 +82,89 @@
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
-            <!-- Default Basic Forms Start -->
-            <div class="pd-20 card-box mb-30">
-                <div class="clearfix">
-                    <div class="pull-left">
-                        <h4 class="text-blue h4">Adding new test</h4>
-                        <p class="mb-30">Fill all fields below</p>
-                    </div>
-                </div>
-                <form accept-charset="UTF-8" action="addSubject" method="post" enctype="multipart/dorm-data">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Select Subject</label>
-                                <select class="custom-select2 form-control" name="subject_name" style="width: 100%; height: 38px;">
-                                    <optgroup label="Alaskan/Hawaiian Time Zone">
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                    </optgroup>
-                                    <optgroup label="Pacific Time Zone">
-                                        <option value="CA">California</option>
-                                        <option value="NV">Nevada</option>
-                                        <option value="OR">Oregon</option>
-                                        <option value="WA">Washington</option>
-                                    </optgroup>
-                                </select>
+            <%--Modal window starts--%>
+            <div class="pd-20 card-box height-100-p">
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-lg" type="button">Create new test</a>
+                <div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="text-blue h4">Adding new test</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <%--Adding new test form starts--%>
+                                    <form accept-charset="UTF-8" action="controller" method="post" enctype="multipart/dorm-data">
+                                        <input type="hidden" name="command" value="addNewTest">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Select Subject</label>
+                                                    <select class="custom-select2 form-control" name="subject_id" style="width: 100%; height: 38px;">
+                                                        <optgroup label="Subjects">
+                                                            <c:forEach var="subject" items="${subjectList}">
+                                                            <option value="${subject.id}">${subject.nameEN}</option>
+                                                            </c:forEach>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-md-2 col-form-label">Name ua</label>
+                                            <div class="col-sm-12 col-md-10">
+                                                <input class="form-control" type="text" placeholder="Enter name in ua language" name="name_ua">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-md-2 col-form-label">Name eng</label>
+                                            <div class="col-sm-12 col-md-10">
+                                                <input class="form-control" placeholder="Enter name in eng language" type="text" name="name_en">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-md-2 col-form-label">Complexity</label>
+                                            <div class="col-sm-12 col-md-10">
+                                                <input class="form-control" placeholder="Enter complexity" type="text" name="complexity">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-md-2 col-form-label">Blocked</label>
+                                            <div class="col-sm-12 col-md-10">
+                                                <input type="checkbox" class="switch-btn" data-color="#f56767" name="blocked">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-md-2 col-form-label">Timer</label>
+                                            <div class="form-group">
+                                                <label>Time in minutes</label>
+                                                <input id="demo_vertical2" type="text" value="60" name="timer">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-md-2 col-form-label">Description ua</label>
+                                            <div class="col-sm-12 col-md-10">
+                                                <textarea class="form-control" placeholder="Enter description in ua" name="description_ua"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-12 col-md-2 col-form-label">Description eng</label>
+                                            <div class="col-sm-12 col-md-10">
+                                                <textarea class="form-control" placeholder="Enter description in eng" name="description_en"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Add test</button>
+                                    </form>
+                                <%--Adding new test form ends--%>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <%--Modal window ends--%>
 
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Subject</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input class="form-control" placeholder="Enter subject" type="text" name="subject_id">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Name ua</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input class="form-control" type="text" placeholder="Enter name in ua language" name="name_ua">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Name eng</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input class="form-control" placeholder="Enter name in eng language" type="text" name="name_en">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Complexity</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input class="form-control" placeholder="Enter complexity" type="text" name="complexity">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Blocked</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input type="checkbox" class="switch-btn" data-color="#f56767" name="blocked">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Timer</label>
-                        <div class="form-group">
-                            <label>Time in minutes</label>
-                            <input id="demo_vertical2" type="text" value="60" name="timer">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Description ua</label>
-                        <div class="col-sm-12 col-md-10">
-                            <textarea class="form-control" placeholder="Enter description in ua" name="description_ua"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Description eng</label>
-                        <div class="col-sm-12 col-md-10">
-                            <textarea class="form-control" placeholder="Enter description in eng" name="description_en"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add test</button>
-                </form>
-
+            <!-- Default Basic Forms Start -->
                 <br>
                 <br>
                 <br>
@@ -174,247 +177,58 @@
                         <table class="data-table table stripe hover nowrap">
                             <thead>
                             <tr>
-                                <th class="table-plus datatable-nosort">ID</th>
+                                <th>ID</th>
                                 <th>Name ua</th>
                                 <th>Name en</th>
-                                <th>Description</th>
+                                <th>Complexity</th>
+                                <th>Requests quantity</th>
+                                <th>Blocked</th>
+                                <th>Timer</th>
+                                <th>Description ua</th>
+                                <th>Description en</th>
+                                <th>Subject ID</th>
                                 <th>Create time</th>
-                                <th class="datatable-nosort">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="table-plus">Gloria F. Mead</td>
-                                <td>25</td>
-                                <td>Sagittarius</td>
-                                <td>2829 Trainer Avenue Peoria, IL 61602 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                            <c:forEach var="test" items="${testList}">
+                                <tr>
+                                    <td><c:out value="${test.id}"/></td>
+                                    <td><c:out value="${test.nameUA}"/></td>
+                                    <td><c:out value="${test.nameEN}"/></td>
+                                    <td><c:out value="${test.complexity}"/></td>
+                                    <td><c:out value="${test.requestsQuantity}"/></td>
+                                    <td><c:out value="${test.blocked}"/></td>
+                                    <td><c:out value="${test.timer}"/></td>
+                                    <td><c:out value="${test.descriptionUA}"/></td>
+                                    <td><c:out value="${test.descriptionEN}"/></td>
+                                    <td><c:out value="${test.subjectId}"/></td>
+                                    <td><c:out value="${test.createdOn}"/></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                                <i class="dw dw-more"></i>
+                                            </a>
+                                            <form action="controller" method="post" class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                <div class="dropdown-item">
+                                                    <a class="btn" href="controller?command=showTestEditForm&id=${test.id}"><i class="dw dw-edit2"></i> Edit</a>
+                                                </div>
+                                                <input type="hidden" name="id" value="${test.id}">
+                                                <input type="hidden" name="command" value="deleteTest">
+                                                <div class="dropdown-item">
+                                                    <i class="dw dw-delete-3"></i>
+                                                    <input class="btn" type="submit" value="Delete">
+                                                </div>
+                                            </form>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>30</td>
-                                <td>Gemini</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>20</td>
-                                <td>Gemini</td>
-                                <td>2829 Trainer Avenue Peoria, IL 61602 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>30</td>
-                                <td>Sagittarius</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>25</td>
-                                <td>Gemini</td>
-                                <td>2829 Trainer Avenue Peoria, IL 61602 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>20</td>
-                                <td>Sagittarius</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>18</td>
-                                <td>Gemini</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>30</td>
-                                <td>Sagittarius</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>30</td>
-                                <td>Sagittarius</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>30</td>
-                                <td>Gemini</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>30</td>
-                                <td>Gemini</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="table-plus">Andrea J. Cagle</td>
-                                <td>30</td>
-                                <td>Gemini</td>
-                                <td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-                                <td>29-03-2018</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
                 <!-- Simple Datatable End -->
             </div>
         </div>

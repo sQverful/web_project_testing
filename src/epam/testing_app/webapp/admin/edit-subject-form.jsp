@@ -7,46 +7,47 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <!-- Basic Page Info -->
-    <meta charset="utf-8">
-    <title>Admin panel</title>
+<%@ include file="jsp-components/admin-header.jsp" %>
+<%--<head>--%>
+<%--    <!-- Basic Page Info -->--%>
+<%--    <meta charset="utf-8">--%>
+<%--    <title>Admin panel</title>--%>
 
-    <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
+<%--    <!-- Site favicon -->--%>
+<%--    <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">--%>
+<%--    <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">--%>
+<%--    <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">--%>
 
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<%--    <!-- Mobile Specific Metas -->--%>
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">--%>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-    <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
-    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
-    <!-- switchery css -->
-    <link rel="stylesheet" type="text/css" href="src/plugins/switchery/switchery.min.css">
-    <!-- bootstrap-tagsinput css -->
-    <link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
-    <!-- bootstrap-touchspin css -->
-    <link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css">
-    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+<%--    <!-- Google Font -->--%>
+<%--    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">--%>
+<%--    <!-- CSS -->--%>
+<%--    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">--%>
+<%--    <!-- switchery css -->--%>
+<%--    <link rel="stylesheet" type="text/css" href="src/plugins/switchery/switchery.min.css">--%>
+<%--    <!-- bootstrap-tagsinput css -->--%>
+<%--    <link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">--%>
+<%--    <!-- bootstrap-touchspin css -->--%>
+<%--    <link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">--%>
 
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+<%--    <!-- Global site tag (gtag.js) - Google Analytics -->--%>
+<%--    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>--%>
+<%--    <script>--%>
+<%--        window.dataLayer = window.dataLayer || [];--%>
+<%--        function gtag(){dataLayer.push(arguments);}--%>
+<%--        gtag('js', new Date());--%>
 
-        gtag('config', 'UA-119386393-1');
-    </script>
-</head>
+<%--        gtag('config', 'UA-119386393-1');--%>
+<%--    </script>--%>
+<%--</head>--%>
 <body>
 <div class="header">
     <div class="header-left">
@@ -93,7 +94,7 @@
                     </div>
                 </div>
                 <form accept-charset="UTF-8" action="controller" method="post" enctype="multipart/dorm-data">
-                    <input type="hidden" name="command" value="editSubject"/>
+                    <input type="hidden" name="command" value="updateSubject"/>
                     <input type="hidden" name="id" value="${subject.id}"/>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Name ua</label>
