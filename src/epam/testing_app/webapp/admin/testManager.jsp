@@ -188,6 +188,7 @@
                                 <th>Description en</th>
                                 <th>Subject ID</th>
                                 <th>Create time</th>
+                                <th class="datatable-nosort">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -210,6 +211,9 @@
                                                 <i class="dw dw-more"></i>
                                             </a>
                                             <form action="controller" method="post" class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                <div class="dropdown-item">
+                                                    <a class="btn" href="controller?command=QAList&id=${test.id}"><i class="fa-question-circle"></i> Questions</a>
+                                                </div>
                                                 <div class="dropdown-item">
                                                     <a class="btn" href="controller?command=showTestEditForm&id=${test.id}"><i class="dw dw-edit2"></i> Edit</a>
                                                 </div>

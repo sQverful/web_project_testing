@@ -11,7 +11,17 @@ public class Answer extends Entity {
     private String answerEN;
     private String answerUA;
     private boolean correct;
-    private Long questionId;
+    private int questionId;
+
+    public static Answer createAnswer(String answerEN, String answerUA, boolean correct, int questionId) {
+        Answer answer = new Answer();
+        answer.setAnswerEN(answerEN);
+        answer.setAnswerUA(answerUA);
+        answer.setCorrect(correct);
+        answer.setQuestionId(questionId);
+        return answer;
+
+    }
 
     public String getAnswerUA() {
         return answerUA;
@@ -37,11 +47,11 @@ public class Answer extends Entity {
         this.correct = correct;
     }
 
-    public Long getQuestionId() {
+    public int getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(Long questionId) {
+    public void setQuestionId(int questionId) {
         this.questionId = questionId;
     }
 

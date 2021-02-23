@@ -1,6 +1,8 @@
 package epam.testing_app.webControllers.command;
 
+import epam.testing_app.database.entity.Question;
 import epam.testing_app.database.entity.Test;
+import epam.testing_app.webControllers.command.QAManagerCommands.*;
 import epam.testing_app.webControllers.command.SubjectManagerCommands.*;
 import epam.testing_app.webControllers.command.TestManagerCommands.*;
 import epam.testing_app.webControllers.command.UserManagerCommands.*;
@@ -41,9 +43,15 @@ public class CommandContainer {
         commands.put("updateTest", new UpdateTestCommand());
         commands.put("deleteTest", new DeleteTestCommand());
 
+//        Question commands
+        commands.put("QAList", new QAListCommand());
+        commands.put("addNewQuestion", new AddNewQuestionCommand());
+        commands.put("addNewAnswer", new AddNewAnswerCommand());
+        commands.put("deleteQuestion", new DeleteQuestionCommand());
+        commands.put("deleteAnswer", new DeleteAnswerCommand());
+        commands.put("setAnswerCorrect", new SetAnswerCorrectCommand());
 
         //   // admin commands
-     //   commands.put("listOrders", new ListOrdersCommand());
 
 //        log.debug("Command container was successfully initialized");
 //        log.trace("Number of commands --> " + commands.size());

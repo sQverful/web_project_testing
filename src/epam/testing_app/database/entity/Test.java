@@ -35,7 +35,7 @@ public class Test extends Entity{
         test.setBlocked(blocked);
         test.setComplexity(complexity);
         test.setTimer(timer);
-        
+
         return test;
 
     }

@@ -18,10 +18,12 @@ public class Path {
 
     public static final String PAGE_ADMIN_TEST_LIST = "/admin/testManager.jsp";
     public static final String PAGE_ADMIN_TEST_FORM_EDIT = "/admin/edit-test-form.jsp";
+
+    public static final String PAGE_ADMIN_QUESTION_LIST = "/admin/questionManager.jsp";
     // commands
     public static final String COMMAND_USER_LIST = "/controller?command=userList";
     public static final String COMMAND_SUBJECT_LIST = "/controller?command=subjectList";
     public static final String COMMAND_TEST_LIST = "/controller?command=testList";
-    public static final String COMMAND__LIST_ORDERS = "/controller?command=listOrders";
-    public static final String COMMAND__LIST_MENU = "/controller?command=listMenu";
+    public static final String COMMAND_QA_LIST = "/controller?command=QAList&id=";
+
 }

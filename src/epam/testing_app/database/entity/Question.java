@@ -11,7 +11,15 @@ public class Question extends Entity {
 
     private String questionEN;
     private String questionUA;
-    private Long testId;
+    private int testId;
+
+    public static Question createQuestion(String questionUA, String questionEN, int testId) {
+        Question question = new Question();
+        question.setQuestionEN(questionEN);
+        question.setQuestionUA(questionUA);
+        question.setTestId(testId);
+        return question;
+    }
 
     public String getQuestionEN() {
         return questionEN;
@@ -29,11 +37,11 @@ public class Question extends Entity {
         this.questionUA = questionUA;
     }
 
-    public Long getTestId() {
+    public int getTestId() {
         return testId;
     }
 
-    public void setTestId(Long testId) {
+    public void setTestId(int testId) {
         this.testId = testId;
     }
 

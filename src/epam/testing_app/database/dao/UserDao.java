@@ -72,12 +72,12 @@ public class UserDao {
             con = DBManager.getInstance().getConnection();
             pstmt = con.prepareStatement(SQL_INSERT_NEW_USER, Statement.RETURN_GENERATED_KEYS);
             int k = 1;
-            long cid = user.getId();
+            int cid = user.getId();
 
             if (cid == 0) {
                 pstmt.setNull(k++, Types.INTEGER);
             } else {
-                pstmt.setLong(k++, user.getId());
+                pstmt.setInt(k++, user.getId());
             }
 
             pstmt.setString(k++, user.getLogin());

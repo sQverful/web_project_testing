@@ -3,10 +3,9 @@ package epam.testing_app.database.dao;
 import epam.testing_app.database.DBManager;
 import epam.testing_app.database.entity.Answer;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Data access object for Answer
@@ -14,6 +13,12 @@ import java.sql.SQLException;
  * @author V.Dorosh
  */
 public class AnswerDao {
+
+    private static final String SQL_FIND_ALL_ANSWERS =
+            "SELECT * FROM answer";
+
+    private static final String SQL_FIND_ALL_ANSWERS_BY_QUESTION_ID =
+            "SELECT * FROM answer WHERE question_id=?";
 
     private static final String SQL_FIND_ANSWER_BY_ANSWER_UA =
             "SELECT * FROM answer WHERE answer_ua=?";
@@ -27,12 +32,61 @@ public class AnswerDao {
     private static final String SQL_UPDATE_ANSWER =
             "UPDATE answer SET answer_ua=?, answer_en=?, correct=?"+
                     " WHERE id=?";
+    private static final String SQL_UPDATE_ANSWER_CORRECT =
+            "UPDATE answer SET correct=?"+
+                    " WHERE id=?";
     private static final String SQL_INSERT_NEW_ANSWER = "INSERT INTO answer" +
             "(id, answer_ua, answer_en, correct, question_id)" +
             "VALUES(?, ?, ?, ?, ?)";
     private static final String SQL_DELETE_ANSWER_BY_ID = "DELETE FROM answer WHERE id=?";
 
 
+    public List<Answer> findAllAnswersByQuestionId(int questionId) {
+        List<Answer> answerList = new ArrayList<>();
+        Connection con = null;
+        ResultSet rs = null;
+        PreparedStatement pstmt = null;
+        AnswerMapper mapper = new AnswerMapper();
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_FIND_ALL_ANSWERS_BY_QUESTION_ID);
+            pstmt.setInt(1, questionId);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                answerList.add(mapper.mapRow(rs));
+            }
+            con.close();
+            rs.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return answerList;
+    }
+
+    public List<Answer> findAllAnswers() {
+        List<Answer> answerList = new ArrayList<>();
+        Connection con = null;
+        ResultSet rs = null;
+        Statement stmt = null;
+        AnswerMapper mapper = new AnswerMapper();
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(SQL_FIND_ALL_ANSWERS);
+            while (rs.next()) {
+                answerList.add(mapper.mapRow(rs));
+            }
+            con.close();
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return answerList;
+    }
 
     public boolean deleteAnswerById(int id) {
         boolean result = false;
@@ -53,6 +107,29 @@ public class AnswerDao {
         return result;
     }
 
+    public boolean updateAnswerCorrect(int answerId, boolean isCorrect) {
+        boolean result = false;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_UPDATE_ANSWER_CORRECT);
+            int k = 1;
+            pstmt.setBoolean(k++, isCorrect);
+            pstmt.setInt(k++, answerId);
+            if (pstmt.executeUpdate() > 0) {
+                result = true;
+            }
+            pstmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        }
+        return result;
+    }
+
     public boolean updateAnswer(Answer answer) {
         boolean result = false;
         Connection con = null;
@@ -60,10 +137,10 @@ public class AnswerDao {
         try {
             con = DBManager.getInstance().getConnection();
             result = updateAnswer(con, answer);
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBManager.getInstance().commitAndClose(con);
         }
         return result;
     }
@@ -182,8 +259,7 @@ public class AnswerDao {
             pstmt = con.prepareStatement(SQL_INSERT_NEW_ANSWER);
             int k = 1;
 
-
-            pstmt.setLong(k++, answer.getId());
+            pstmt.setNull(k++, Types.INTEGER);
             pstmt.setString(k++, answer.getAnswerUA());
             pstmt.setString(k++, answer.getAnswerEN());
             pstmt.setBoolean(k++, answer.getCorrect());
@@ -194,6 +270,7 @@ public class AnswerDao {
             }
 
             pstmt.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -209,12 +286,19 @@ public class AnswerDao {
                 answer.setAnswerEN(rs.getString(DBFields.ANSWER_EN));
                 answer.setAnswerUA(rs.getString(DBFields.ANSWER_UA));
                 answer.setCorrect(rs.getBoolean(DBFields.ANSWER_CORRECT));
-                answer.setQuestionId(rs.getLong(DBFields.ANSWER_QUESTION_ID));
+                answer.setQuestionId(rs.getInt(DBFields.ANSWER_QUESTION_ID));
             } catch (SQLException e) {
                 throw new IllegalStateException();
             }
             return answer;
         }
+    }
+
+    public static void main(String[] args) {
+        Answer answer = Answer.createAnswer("test", "тест", true, 1);
+        AnswerDao answerDao = new AnswerDao();
+        System.out.println(answerDao.updateAnswerCorrect(1, false));
+//        System.out.println(answerDao.insertAnswer(answer));
     }
 
 

@@ -4,6 +4,8 @@ import epam.testing_app.database.DBManager;
 import epam.testing_app.database.entity.Question;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Data access object for Question
@@ -20,6 +22,9 @@ public class QuestionDao {
     private static final String SQL_FIND_QUESTION_BY_ID =
             "SELECT * FROM question WHERE id=?";
 
+    private static final String SQL_FIND_ALL_QUESTION_BY_TEST_ID =
+            "SELECT * FROM question WHERE test_id=?";
+
     private static final String SQL_UPDATE_QUESTION =
             "UPDATE question SET question_ua=?, question_en=?"+
                     " WHERE id=?";
@@ -28,6 +33,31 @@ public class QuestionDao {
             "VALUES(?, ?, ?, ?)";
     private static final String SQL_DELETE_QUESTION_BY_ID = "DELETE FROM question WHERE id=?";
 
+    public List<Question> findAllQuestionsByTestId(int testID) {
+        List<Question> questionList = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        QuestionMapper mapper = new QuestionMapper();
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_FIND_ALL_QUESTION_BY_TEST_ID);
+            pstmt.setInt(1, testID);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                questionList.add(mapper.mapRow(rs));
+            }
+            con.close();
+            pstmt.close();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return questionList;
+    }
 
     public boolean deleteQuestionById(int id) {
         boolean result = false;
@@ -55,10 +85,10 @@ public class QuestionDao {
         try {
             con = DBManager.getInstance().getConnection();
             result = updateQuestion(con, question);
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBManager.getInstance().commitAndClose(con);
         }
         return result;
     }
@@ -166,19 +196,19 @@ public class QuestionDao {
         return question;
     }
 
-    public boolean insertSubject(Question question) {
+    public boolean insertQuestion(Question question) {
         boolean result = false;
         Connection con = null;
-        ResultSet rs = null;
         PreparedStatement pstmt = null;
 
         try {
             con = DBManager.getInstance().getConnection();
             pstmt = con.prepareStatement(SQL_INSERT_NEW_QUESTION);
+
             int k = 1;
 
 
-            pstmt.setLong(k++, question.getId());
+            pstmt.setNull(k++, Types.INTEGER);
             pstmt.setString(k++, question.getQuestionUA());
             pstmt.setString(k++, question.getQuestionEN());
             pstmt.setLong(k++, question.getTestId());
@@ -188,6 +218,7 @@ public class QuestionDao {
             }
 
             pstmt.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -202,11 +233,19 @@ public class QuestionDao {
                 question.setId(rs.getInt(DBFields.ENTITY_ID));
                 question.setQuestionUA(rs.getString(DBFields.QUESTION_UA));
                 question.setQuestionEN(rs.getString(DBFields.QUESTION_EN));
-                question.setTestId(rs.getLong(DBFields.QUESTION_TEST_ID));
+                question.setTestId(rs.getInt(DBFields.QUESTION_TEST_ID));
             } catch (SQLException e) {
                 throw new IllegalStateException();
             }
             return question;
         }
+    }
+
+    public static void main(String[] args) {
+        QuestionDao questionDao = new QuestionDao();
+        Question question = Question.createQuestion("тест", "test", 4);
+        System.out.println(questionDao.findAllQuestionsByTestId(4));
+
+//        System.out.println(questionDao.insertQuestion(question));
     }
 }
