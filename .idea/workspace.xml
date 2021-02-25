@@ -7,79 +7,101 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4652f9c-2935-404b-b162-3a65d29de804" name="Default Changelist" comment="Front+back improvements">
-      <change afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/UserProfileCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/filter/CommandAccessFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/jsp/user-navbar.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/jsp-components/admin-head.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/filter/JspAccessFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/Path.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/database/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/database/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/database/dao/EntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/database/dao/EntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/database/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/database/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/CommandContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/CommandContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/LogoutCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/LogoutCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/filter/EncodingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/filter/EncodingFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/jsp/client-header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/jsp/client-head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/QAManagerCommands/AddNewAnswerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/QAManagerCommands/AddNewAnswerCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/QAManagerCommands/AddNewQuestionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/QAManagerCommands/AddNewQuestionCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/QAManagerCommands/DeleteAnswerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/QAManagerCommands/DeleteAnswerCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/QAManagerCommands/DeleteQuestionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/QAManagerCommands/DeleteQuestionCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/QAManagerCommands/QAListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/QAManagerCommands/QAListCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/QAManagerCommands/SetAnswerCorrectCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/QAManagerCommands/SetAnswerCorrectCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ShowAdminPageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/ShowAdminPageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/SubjectManagerCommands/AddNewSubjectCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/SubjectManagerCommands/AddNewSubjectCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/SubjectManagerCommands/DeleteSubjectCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/SubjectManagerCommands/DeleteSubjectCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/SubjectManagerCommands/ShowSubjectEditFormCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/SubjectManagerCommands/ShowSubjectEditFormCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/SubjectManagerCommands/SubjectListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/SubjectManagerCommands/SubjectListCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/SubjectManagerCommands/UpdateSubjectCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/SubjectManagerCommands/UpdateSubjectCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/TestManagerCommands/AddNewTestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/TestManagerCommands/AddNewTestCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/TestManagerCommands/DeleteTestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/TestManagerCommands/DeleteTestCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/TestManagerCommands/SetBlockedTestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/TestManagerCommands/SetBlockedTestCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/TestManagerCommands/ShowTestEditFormCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/TestManagerCommands/ShowTestEditFormCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/TestManagerCommands/TestListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/TestManagerCommands/TestListCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/TestManagerCommands/UpdateTestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/TestManagerCommands/UpdateTestCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/UserManagerCommands/AddNewUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/UserManagerCommands/AddNewUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/UserManagerCommands/DeleteUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/UserManagerCommands/DeleteUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/UserManagerCommands/SetBlockedUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/UserManagerCommands/SetBlockedUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/UserManagerCommands/ShowUserEditFormCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/UserManagerCommands/ShowUserEditFormCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/UserManagerCommands/UpdateUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/UserManagerCommands/UpdateUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/UserManagerCommands/UserListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/UserManagerCommands/UserListCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/filter/CommandAccessFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/filter/CommandAccessFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/jsp/user-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/jsp/user-navbar.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/admin-main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/admin-main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/edit-subject-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/edit-subject-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/edit-test-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/edit-test-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/edit-user-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/edit-user-form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/jsp-components/admin-header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/jsp-components/admin-header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/left-side-bar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/left-side-bar.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/questionManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/questionManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/subjectManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/subjectManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/testManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/testManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/userManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/admin/userManager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/main-menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/main-menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/Path.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/database/DBManager$Int.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/database/DBManager$Int.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/database/DBManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/database/DBManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/CommandContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/CommandContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/LogoutCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/LogoutCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/filter/EncodingFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/filter/EncodingFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/jsp/client-header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/main.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/filter/CommandAccessFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/filter/CommandAccessFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/jsp/user-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/jsp/user-navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/admin-main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/admin-main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/edit-subject-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/edit-subject-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/edit-test-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/edit-test-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/edit-user-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/edit-user-form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/jsp-components/admin-header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/jsp-components/admin-header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/left-side-bar.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/questionManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/questionManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/subjectManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/subjectManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/testManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/testManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/userManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/admin/userManager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/main-menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/main-menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/main.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/Path.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/DBManager$Int.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/DBManager$Int.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/DBManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/DBManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/CommandContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/CommandContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/LogoutCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/LogoutCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/filter/EncodingFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/filter/EncodingFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/jsp/client-header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/filter/CommandAccessFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/filter/CommandAccessFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/jsp/user-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/jsp/user-navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/admin-main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/admin-main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/edit-subject-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/edit-subject-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/edit-test-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/edit-test-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/edit-user-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/edit-user-form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/jsp-components/admin-header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/jsp-components/admin-header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/left-side-bar.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/questionManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/questionManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/subjectManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/subjectManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/testManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/testManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/userManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/admin/userManager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/main-menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/main-menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/jsp/client-header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/main.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/jsp/user-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/jsp/user-navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/admin/admin-main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/admin-main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/admin/edit-subject-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/edit-subject-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/admin/edit-test-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/edit-test-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/admin/edit-user-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/edit-user-form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/admin/jsp-components/admin-header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/jsp-components/admin-header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/admin/left-side-bar.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/admin/questionManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/questionManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/admin/subjectManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/subjectManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/admin/testManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/testManager.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/admin/userManager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/admin/userManager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/main-menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/main-menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/main.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/register.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -378,7 +400,7 @@
       <workItem from="1613039477145" duration="10569000" />
       <workItem from="1613391394848" duration="28369000" />
       <workItem from="1613565785309" duration="42518000" />
-      <workItem from="1613749409765" duration="94567000" />
+      <workItem from="1613749409765" duration="96862000" />
     </task>
     <servers />
   </component>
@@ -416,7 +438,7 @@
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/epam/testing_app/webControllers/command/TestManagerCommands/UpdateTestCommand.java</url>
+          <url>file://$PROJECT_DIR$/src/epam/testing_app/webControllers/command/AdminCommands/TestManagerCommands/UpdateTestCommand.java</url>
           <line>40</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>

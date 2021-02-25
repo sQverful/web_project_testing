@@ -1,12 +1,13 @@
 package epam.testing_app.webControllers.command;
 
 
+import epam.testing_app.webControllers.command.AdminCommands.ShowAdminPageCommand;
 import epam.testing_app.webControllers.command.ClientCommands.ShowMainPageCommand;
 import epam.testing_app.webControllers.command.ClientCommands.UserProfileCommand;
-import epam.testing_app.webControllers.command.QAManagerCommands.*;
-import epam.testing_app.webControllers.command.SubjectManagerCommands.*;
-import epam.testing_app.webControllers.command.TestManagerCommands.*;
-import epam.testing_app.webControllers.command.UserManagerCommands.*;
+import epam.testing_app.webControllers.command.AdminCommands.QAManagerCommands.*;
+import epam.testing_app.webControllers.command.AdminCommands.SubjectManagerCommands.*;
+import epam.testing_app.webControllers.command.AdminCommands.TestManagerCommands.*;
+import epam.testing_app.webControllers.command.AdminCommands.UserManagerCommands.*;
 
 import java.util.Map;
 import java.util.TreeMap;

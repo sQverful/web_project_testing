@@ -3,6 +3,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="header-left">
         <a class="menu-icon dw dw-menu" data-toggle="left-side-bar" href="javascript:;"></a>
+        <div class="brand-logo">
+            <a href="${pageContext.request.contextPath}/controller?command=showMainPage">
+                <img src="admin/vendors/images/deskapp-logo.svg" alt="">
+            </a>
+        </div>
     </div>
     <div class="header-right">
         <div class="user-info-dropdown">

@@ -12,7 +12,7 @@
 <body>
 
 <%@ include file="jsp-components/admin-header.jsp" %>
-<%@ include file="left-side-bar.html"%>
+<%@ include file="left-side-bar.jsp"%>
 <div class="mobile-menu-overlay"></div>
 
 <div class="main-container">

@@ -35,7 +35,7 @@
                 <param-name>admin</param-name>
                 <param-value>adminPage addNewUser deleteUser showUserEditForm updateUser userList setBlockedUser subjectList deleteSubject
                     addNewSubject showSubjectEditForm updateSubject addNewTest showTestEditForm updateTest deleteTest setBlockedTest
-                    QAList addNewQuestion addNewAnswer deleteQuestion deleteAnswer setAnswerCorrect
+                    QAList addNewQuestion addNewAnswer deleteQuestion deleteAnswer setAnswerCorrect testList
                 </param-value>
             </init-param>
             <init-param>
