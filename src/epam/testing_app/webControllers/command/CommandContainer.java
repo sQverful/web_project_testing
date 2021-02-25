@@ -1,8 +1,8 @@
 package epam.testing_app.webControllers.command;
 
-import epam.testing_app.database.entity.Question;
-import epam.testing_app.database.entity.Test;
+
 import epam.testing_app.webControllers.command.ClientCommands.ShowMainPageCommand;
+import epam.testing_app.webControllers.command.ClientCommands.UserProfileCommand;
 import epam.testing_app.webControllers.command.QAManagerCommands.*;
 import epam.testing_app.webControllers.command.SubjectManagerCommands.*;
 import epam.testing_app.webControllers.command.TestManagerCommands.*;
@@ -30,7 +30,7 @@ public class CommandContainer {
 
         //ADMIN ROLE COMMANDS BELOW
         commands.put("adminPage", new ShowAdminPageCommand());
-        //User commands
+        //User managing commands
         commands.put("addNewUser", new AddNewUserCommand());
         commands.put("deleteUser", new DeleteUserCommand());
         commands.put("showUserEditForm", new ShowUserEditFormCommand());
@@ -38,14 +38,14 @@ public class CommandContainer {
         commands.put("userList", new UserListCommand());
         commands.put("setBlockedUser", new SetBlockedUserCommand());
 
-//        Subject commands
+//        Subject managing commands
         commands.put("subjectList", new SubjectListCommand());
         commands.put("deleteSubject", new DeleteSubjectCommand());
         commands.put("addNewSubject", new AddNewSubjectCommand());
         commands.put("showSubjectEditForm", new ShowSubjectEditFormCommand());
         commands.put("updateSubject", new UpdateSubjectCommand());
 
-//        Test commands
+//        Test managing commands
         commands.put("testList", new TestListCommand());
         commands.put("addNewTest", new AddNewTestCommand());
         commands.put("showTestEditForm", new ShowTestEditFormCommand());
@@ -54,7 +54,7 @@ public class CommandContainer {
         commands.put("setBlockedTest", new SetBlockedTestCommand());
 
 
-//        Question commands
+//        Question managing commands
         commands.put("QAList", new QAListCommand());
         commands.put("addNewQuestion", new AddNewQuestionCommand());
         commands.put("addNewAnswer", new AddNewAnswerCommand());
@@ -62,8 +62,9 @@ public class CommandContainer {
         commands.put("deleteAnswer", new DeleteAnswerCommand());
         commands.put("setAnswerCorrect", new SetAnswerCorrectCommand());
 
-        //   // admin commands
 
+//        STUDENT ROLE COMMANDS BELOW
+        commands.put("userProfile", new UserProfileCommand());
 //        log.debug("Command container was successfully initialized");
 //        log.trace("Number of commands --> " + commands.size());
     }

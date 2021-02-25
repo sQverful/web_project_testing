@@ -11,6 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ *  The controller is only one main servlet that receives
+ *  and processes all GET and POST requests.
+ *
+ *  Controller looks for available command in CommandContainer.
+ *  After receiving command controller executes it and receives Router object.
+ *  Depending on router data controller decides what action
+ *  should be performed: redirect or forward.
+ *
+ * @author V.Dorosh
+ */
 @WebServlet("/controller")
 public class Controller extends HttpServlet {
 

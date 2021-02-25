@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Root of all entities which have identifier field.
- *
+ * @author V.Dorosh
  */
 public class Entity implements Serializable {
 

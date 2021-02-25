@@ -25,6 +25,10 @@ public class Path {
     public static final String PAGE_ADMIN_TEST_FORM_EDIT = "/admin/edit-test-form.jsp";
 
     public static final String PAGE_ADMIN_QUESTION_LIST = "/admin/questionManager.jsp";
+
+    //User Pages
+    public static final String PAGE_USER_PROFILE = "/user-profile.jsp";
+
     // commands
     public static final String COMMAND_SHOW_ADMIN_PAGE =  "/controller?command=adminPage";
     public static final String COMMAND_SHOW_MAIN_PAGE =  "/controller?command=showMainPage";

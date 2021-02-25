@@ -9,6 +9,7 @@ import java.io.IOException;
  * The Encoding filter.
  * Changes encoding.
  *
+ * @author V.Dorosh
  */
 @WebFilter(urlPatterns = {"/*"},
         initParams = {@WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Param")})
