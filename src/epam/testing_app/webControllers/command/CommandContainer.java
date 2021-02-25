@@ -51,6 +51,8 @@ public class CommandContainer {
         commands.put("showTestEditForm", new ShowTestEditFormCommand());
         commands.put("updateTest", new UpdateTestCommand());
         commands.put("deleteTest", new DeleteTestCommand());
+        commands.put("setBlockedTest", new SetBlockedTestCommand());
+
 
 //        Question commands
         commands.put("QAList", new QAListCommand());

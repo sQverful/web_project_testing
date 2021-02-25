@@ -26,6 +26,10 @@ public class TestDao {
     private static final String SQL_UPDATE_TEST =
             "UPDATE test SET name_ua=?, name_en=?, complexity=?, blocked=?, timer=?, description_ua=?, description_en=?"+
                     " WHERE id=?";
+    private static final String SQL_UPDATE_BLOCKED_TEST =
+            "UPDATE test SET blocked=?"+
+                    " WHERE id=?";
+
     private static final String SQL_INSERT_NEW_TEST = "INSERT INTO test" +
             "(id, name_ua, name_en, complexity, blocked, timer, description_ua, description_en, subject_id, create_time)" +
             "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
@@ -61,6 +65,29 @@ public class TestDao {
 
         return tests;
     }
+    public boolean updateTestBlocked(int id, boolean blocked) {
+        boolean result = false;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_UPDATE_BLOCKED_TEST);
+            int k = 1;
+            pstmt.setBoolean(k++, blocked);
+            pstmt.setInt(k++, id);
+            if (pstmt.executeUpdate() > 0) {
+                return result = true;
+            }
+
+            pstmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public boolean updateTest(Test test) {
         boolean result = false;
         Connection con = null;
@@ -188,7 +215,6 @@ public class TestDao {
         }
         return test;
     }
-
     public Test getTestByNameUa(String nameUa) {
         Test test = null;
         PreparedStatement pstmt = null;

@@ -20,6 +20,7 @@ public class LogoutCommand extends Command {
         if (session != null) {
             session.invalidate();
         }
+        router.setPage(request.getContextPath());
         router.setRedirect();
         return router;
     }

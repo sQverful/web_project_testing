@@ -199,7 +199,24 @@
                                     <td><c:out value="${test.nameEN}"/></td>
                                     <td><c:out value="${test.complexity}"/></td>
                                     <td><c:out value="${test.requestsQuantity}"/></td>
-                                    <td><c:out value="${test.blocked}"/></td>
+                                    <td>
+                                        <c:if test="${test.blocked eq 'false'}">
+                                            <form action="controller" method="post">
+                                                <input type="hidden" name="command" value="setBlockedTest">
+                                                <input type="hidden" name="id" value="${test.id}">
+                                                <input type="hidden" name="isBlocked" value="true">
+                                                <input type="submit" class="btn btn-success btn-sm" value="Unblocked">
+                                            </form>
+                                        </c:if>
+                                        <c:if test="${test.blocked eq 'true'}">
+                                            <form action="controller" method="post">
+                                                <input type="hidden" name="command" value="setBlockedTest">
+                                                <input type="hidden" name="id" value="${test.id}">
+                                                <input type="hidden" name="isBlocked" value="false">
+                                                <input type="submit" class="btn btn-warning btn-sm" value="Blocked">
+                                            </form>
+                                        </c:if>
+                                    </td>
                                     <td><c:out value="${test.timer}"/></td>
                                     <td><c:out value="${test.descriptionUA}"/></td>
                                     <td><c:out value="${test.descriptionEN}"/></td>

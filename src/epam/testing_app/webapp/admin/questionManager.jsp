@@ -72,7 +72,26 @@
                                 <td><c:out value="${selectedTest.nameEN}"/></td>
                                 <td><c:out value="${selectedTest.complexity}"/></td>
                                 <td><c:out value="${selectedTest.requestsQuantity}"/></td>
-                                <td><c:out value="${selectedTest.blocked}"/></td>
+                                <td>
+                                    <c:if test="${selectedTest.blocked eq 'false'}">
+                                        <form action="controller" method="post">
+                                            <input type="hidden" name="command" value="setBlockedTest">
+                                            <input type="hidden" name="questionPage" value="true">
+                                            <input type="hidden" name="id" value="${selectedTest.id}">
+                                            <input type="hidden" name="isBlocked" value="true">
+                                            <input type="submit" class="btn btn-success btn-sm" value="Unblocked">
+                                        </form>
+                                    </c:if>
+                                    <c:if test="${selectedTest.blocked eq 'true'}">
+                                        <form action="controller" method="post">
+                                            <input type="hidden" name="command" value="setBlockedTest">
+                                            <input type="hidden" name="questionPage" value="true">
+                                            <input type="hidden" name="id" value="${selectedTest.id}">
+                                            <input type="hidden" name="isBlocked" value="false">
+                                            <input type="submit" class="btn btn-warning btn-sm" value="Blocked">
+                                        </form>
+                                    </c:if>
+                                </td>
                                 <td><c:out value="${selectedTest.timer}"/></td>
                                 <td><c:out value="${selectedTest.descriptionUA}"/></td>
                                 <td><c:out value="${selectedTest.descriptionEN}"/></td>
