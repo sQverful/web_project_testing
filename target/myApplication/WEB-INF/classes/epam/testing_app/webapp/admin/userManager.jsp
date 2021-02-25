@@ -164,7 +164,7 @@
                     <table class="data-table table stripe hover nowrap">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            <th class="table-plus">ID</th>
                             <th>Login</th>
                             <th>Name</th>
                             <th>Surname</th>
@@ -184,7 +184,24 @@
                             <td><c:out value="${user.surname}"/> </td>
                             <td><c:out value="${user.email}"/></td>
                             <td><c:out value="${user.createTime}"/></td>
-                            <td><c:out value="${user.blocked}"/></td>
+                            <td>
+                                <c:if test="${user.blocked eq 'false'}">
+                                    <form action="controller" method="post">
+                                        <input type="hidden" name="command" value="setBlockedUser">
+                                        <input type="hidden" name="id" value="${user.id}">
+                                        <input type="hidden" name="isBlocked" value="true">
+                                        <input type="submit" class="btn btn-success btn-sm" value="Unblocked">
+                                    </form>
+                                </c:if>
+                                <c:if test="${user.blocked eq 'true'}">
+                                    <form action="controller" method="post">
+                                        <input type="hidden" name="command" value="setBlockedUser">
+                                        <input type="hidden" name="id" value="${user.id}">
+                                        <input type="hidden" name="isBlocked" value="false">
+                                        <input type="submit" class="btn btn-warning btn-sm" value="Blocked">
+                                    </form>
+                                </c:if>
+                            </td>
                             <td><c:out value='${user.roleId==1 ? "student" : "admin"}'/></td>
                             <td>
                                 <div class="dropdown">
@@ -226,6 +243,11 @@
 <script src="vendors/scripts/script.min.js"></script>
 <script src="vendors/scripts/process.js"></script>
 <script src="vendors/scripts/layout-settings.js"></script>
+<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="vendors/scripts/datatable-setting.js"></script>
 <!-- switchery js -->
 <script src="src/plugins/switchery/switchery.min.js"></script>
 <!-- bootstrap-touchspin js -->

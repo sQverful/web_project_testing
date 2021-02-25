@@ -20,6 +20,9 @@ public class UserDataValidator {
     public static boolean isValidUserParameters(HttpServletRequest request) {
         boolean isValid = true;
 
+        if (request.getParameter(DBFields.USER_LOGIN).isEmpty()) {
+            return false;
+        }
         if (request.getParameter(DBFields.USER_NAME).isEmpty()) {
             return false;
         }

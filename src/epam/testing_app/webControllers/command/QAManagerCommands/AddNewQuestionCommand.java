@@ -3,6 +3,7 @@ package epam.testing_app.webControllers.command.QAManagerCommands;
 import epam.testing_app.Path;
 import epam.testing_app.database.dao.QuestionDao;
 import epam.testing_app.database.entity.Question;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 import epam.testing_app.webControllers.validator.QADataValidator;
 
@@ -16,19 +17,30 @@ public class AddNewQuestionCommand extends Command {
     private static final long serialVersionUID = 6725782087719723190L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
+
         if (!QADataValidator.isValidQuestionParameters(request)) {
-            return Path.PAGE_ERROR_PAGE;
+            request.setAttribute("message", "invalid question params");
+            request.setAttribute("code", "404");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
         }
 
         int testID = Integer.parseInt(request.getParameter("test_id"));
         String questionUA = request.getParameter("question_ua");
         String questionEN = request.getParameter("question_en");
         Question question = Question.createQuestion(questionUA, questionEN, testID);
-        new QuestionDao().insertQuestion(question);
 
-        String forward = Path.COMMAND_QA_LIST + testID;
+        if (!new QuestionDao().insertQuestion(question)) {
+            request.setAttribute("message", "cannot insert new question");
+            request.setAttribute("code", "500");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
+        }
 
-        return forward;
+        router.setPage(Path.COMMAND_QA_LIST + testID);
+        router.setRedirect();
+        return router;
     }
 }

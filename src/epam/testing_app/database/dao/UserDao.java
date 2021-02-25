@@ -23,6 +23,10 @@ public class UserDao {
     private static final String SQL_FIND_USER_BY_ID =
             "SELECT * FROM user WHERE id=?";
 
+    private static final String SQL_UPDATE_USER_BLOCKED =
+            "UPDATE user SET blocked=?"+
+                    "	WHERE id=?";
+
     private static final String SQL_UPDATE_USER =
             "UPDATE user SET password=?, name=?, surname=?, email=?, blocked=?, role_id=?"+
                     "	WHERE id=?";
@@ -61,6 +65,28 @@ public class UserDao {
         return users;
     }
 
+    public boolean updateUserBlocked(int userID, boolean isBlocked) {
+        boolean result = false;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_UPDATE_USER_BLOCKED);
+            int k = 1;
+            pstmt.setBoolean(k++, isBlocked);
+            pstmt.setInt(k++, userID);
+            if (pstmt.executeUpdate() > 0) {
+                result = true;
+            }
+
+            con.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
     public boolean insertUser(User user) {
         boolean res = false;
 
@@ -174,21 +200,24 @@ public class UserDao {
         }
         return result;
     }
-    public void updateUser(User user) {
+    public boolean updateUser(User user) {
+        boolean result = false;
         Connection con = null;
 
         try {
             con = DBManager.getInstance().getConnection();
-            updateUser(con, user);
+            result = updateUser(con, user);
             con.close();
         } catch (SQLException e) {
             DBManager.getInstance().rollbackAndClose(con);
             e.printStackTrace();
         } finally {
         }
+        return result;
     }
 
-    public void updateUser(Connection con, User user) throws SQLException {
+    public boolean updateUser(Connection con, User user) throws SQLException {
+        boolean result = false;
 
         PreparedStatement pstmt = con.prepareStatement(SQL_UPDATE_USER);
         int k = 1;
@@ -199,8 +228,11 @@ public class UserDao {
         pstmt.setBoolean(k++, user.isBlocked());
         pstmt.setInt(k++, user.getRoleId());
         pstmt.setInt(k++, user.getId());
-        pstmt.executeUpdate();
+        if (pstmt.executeUpdate() > 0) {
+            result = true;
+        }
         pstmt.close();
+        return result;
     }
 
     /**
@@ -233,7 +265,7 @@ public class UserDao {
 
 //       System.out.println(userDao.insertUser(User.createUser("test12", "test", "test",
 //               "test12@test.com", "test", true, 1)));
-        System.out.println(userDao.deleteUserById(17));
+        System.out.println(userDao.findAllUsers());
 
 //        System.out.println(userDao.insertUser(User.createUser("admin", "admin", "admin",
 //                "admin@test.com", "admin", false, 2)));

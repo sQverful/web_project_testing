@@ -3,6 +3,7 @@ package epam.testing_app.webControllers.command.UserManagerCommands;
 import epam.testing_app.Path;
 import epam.testing_app.database.dao.UserDao;
 import epam.testing_app.database.entity.User;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,8 @@ public class UpdateUserCommand extends Command {
     private static final long serialVersionUID = -3031377563906528848L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
         int id = Integer.parseInt(request.getParameter("id"));
         String login = request.getParameter("login");
         String name = request.getParameter("name");
@@ -29,8 +31,16 @@ public class UpdateUserCommand extends Command {
 
         User user = User.createUser(login, name, surname, email, password, blocked, roleId);
         user.setId(id);
-        new UserDao().updateUser(user);
 
-        return Path.COMMAND_USER_LIST;
+        if (!new UserDao().updateUser(user)) {
+            request.setAttribute("message", "cannot update user");
+            request.setAttribute("code", "500");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
+        }
+
+        router.setPage(Path.COMMAND_USER_LIST);
+        router.setRedirect();
+        return router;
     }
 }

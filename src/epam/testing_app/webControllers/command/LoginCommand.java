@@ -4,6 +4,7 @@ import epam.testing_app.Path;
 import epam.testing_app.database.dao.UserDao;
 import epam.testing_app.database.entity.Role;
 import epam.testing_app.database.entity.User;
+import epam.testing_app.webControllers.Router;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,8 @@ public class LoginCommand extends Command {
 //    private static final Logger log = Logger.getLogger(LoginCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
 //        log.debug("Command starts");
 
         HttpSession session = request.getSession();
@@ -32,13 +33,13 @@ public class LoginCommand extends Command {
 
         //error handler
         String errorMessage = null;
-        String forward = Path.PAGE_ERROR_PAGE;
+        router.setPage(Path.PAGE_ERROR_PAGE);
 
         if (login == null || password == null || login.isEmpty() || password.isEmpty()) {
             errorMessage = "Login/password cannot be empty";
             request.setAttribute("errorMassage", errorMessage);
 //            log.error("errorMessage --> " + errorMessage);
-            return forward;
+            return router;
         }
 
         User user = new UserDao().getUserByLogin(login);
@@ -49,17 +50,19 @@ public class LoginCommand extends Command {
             errorMessage = "Cannot find user with such login/password";
             request.setAttribute("errorMessage", errorMessage);
 //            log.error("errorMessage --> " + errorMessage);
-            return forward;
+            return router;
         } else {
             Role userRole = Role.getRole(user);
 //            log.trace("userRole --> " + userRole);
 
             if (userRole == Role.ADMIN) {
-                forward = Path.PAGE_ADMIN_MAIN;
+                router.setRedirect();
+                router.setPage(Path.COMMAND_SHOW_ADMIN_PAGE);
             }
 
             if (userRole == Role.STUDENT) {
-                forward = Path.PAGE_MAIN;
+                router.setRedirect();
+                router.setPage(Path.COMMAND_SHOW_MAIN_PAGE);
             }
 
             session.setAttribute("user", user);
@@ -74,6 +77,6 @@ public class LoginCommand extends Command {
         }
 
 //        log.debug("Command finished");
-        return forward;
+        return router;
     }
 }

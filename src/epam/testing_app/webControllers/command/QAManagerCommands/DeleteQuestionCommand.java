@@ -2,6 +2,7 @@ package epam.testing_app.webControllers.command.QAManagerCommands;
 
 import epam.testing_app.Path;
 import epam.testing_app.database.dao.QuestionDao;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 
 import javax.servlet.ServletException;
@@ -14,14 +15,21 @@ public class DeleteQuestionCommand extends Command {
     private static final long serialVersionUID = -1343407326222617797L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("question_id"));
-        new QuestionDao().deleteQuestionById(id);
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
 
+        int id = Integer.parseInt(request.getParameter("question_id"));
+
+        if (!new QuestionDao().deleteQuestionById(id)) {
+            request.setAttribute("message", "cannot delete such question");
+            request.setAttribute("code", "500");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
+        }
 
         String testID = request.getParameter("test_id");
-        String forward = Path.COMMAND_QA_LIST + testID;
-
-        return forward;
+        router.setPage(Path.COMMAND_QA_LIST + testID);
+        router.setRedirect();
+        return router;
     }
 }

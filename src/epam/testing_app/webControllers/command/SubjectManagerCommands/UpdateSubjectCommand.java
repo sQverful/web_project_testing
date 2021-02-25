@@ -1,10 +1,10 @@
 package epam.testing_app.webControllers.command.SubjectManagerCommands;
 
-import com.mysql.cj.Session;
 import epam.testing_app.Path;
 import epam.testing_app.database.dao.SubjectDao;
 import epam.testing_app.database.entity.Subject;
 import epam.testing_app.database.entity.User;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 import epam.testing_app.webControllers.validator.SubjectDataValidator;
 
@@ -18,9 +18,13 @@ public class UpdateSubjectCommand extends Command {
     private static final long serialVersionUID = -3168296939177779340L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
         if (!SubjectDataValidator.isValidSubjectParameters(request)) {
-            return Path.PAGE_ERROR_PAGE;
+            request.setAttribute("message", "invalid user params");
+            request.setAttribute("code", "404");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
         }
         HttpSession session = request.getSession();
         User adminUser = (User) session.getAttribute("user");
@@ -33,7 +37,16 @@ public class UpdateSubjectCommand extends Command {
 
         Subject subjectToUpdate = Subject.createSubject(nameEN, nameUA, descEN, descUA, adminUser.getId());
         subjectToUpdate.setId(id);
-        new SubjectDao().updateSubject(subjectToUpdate);
-        return Path.COMMAND_SUBJECT_LIST;
+
+        if (!new SubjectDao().updateSubject(subjectToUpdate)) {
+            request.setAttribute("message", "cannot update subject");
+            request.setAttribute("code", "500");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
+        }
+
+        router.setPage(Path.COMMAND_SUBJECT_LIST);
+        router.setRedirect();
+        return router;
     }
 }

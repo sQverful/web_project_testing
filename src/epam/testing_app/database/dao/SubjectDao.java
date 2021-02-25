@@ -2,6 +2,7 @@ package epam.testing_app.database.dao;
 
 import epam.testing_app.database.DBManager;
 import epam.testing_app.database.entity.Subject;
+import epam.testing_app.database.entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +14,12 @@ import java.util.List;
  * @author V.Dorosh
  */
 public class SubjectDao {
+
+    private static final String SQL_FIND_ALL_ADMIN_DETAILS =
+            "SELECT subject.admin_id, user.name, user.surname, user.email " +
+                    "FROM subject " +
+                    "INNER JOIN user " +
+                    "ON subject.admin_id = user.id";
 
     private static final String SQL_FIND_ALL_SUBJECTS =
             "SELECT * FROM subject";
@@ -34,6 +41,38 @@ public class SubjectDao {
             "VALUES(?, ?, ?, ?, ?, ?, now())";
 
     private static final String SQL_DELETE_BY_ID = "DELETE FROM subject WHERE id=?";
+
+    /**
+     * This method gets additional details about admin
+     * SQL request returns: subject.admin_id, user.name, user.surname. user.email
+     *
+     * @return List<User>
+     */
+    public List<User> findAllAdminDetails() {
+        List<User> adminsList = new ArrayList<>();
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        AdminDetailsMapper mapper = new AdminDetailsMapper();
+        try {
+            con = DBManager.getInstance().getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(SQL_FIND_ALL_ADMIN_DETAILS);
+
+            while (rs.next()) {
+                adminsList.add(mapper.mapRow(rs));
+            }
+
+            stmt.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+//            DBManager.getInstance().commitAndClose(con);
+        }
+        return adminsList;
+    }
 
     public List<Subject> findAllSubjects() {
         List<Subject> subjects = new ArrayList<>();
@@ -62,7 +101,6 @@ public class SubjectDao {
 
         return subjects;
     }
-    
     public boolean deleteSubjectById(int id) {
         boolean result = false;
         Connection con = null;
@@ -242,9 +280,31 @@ public class SubjectDao {
     }
 
     /**
+     * Extracts a user (admin) from the result set row
+     * Sets admin details in user object
+     *
+     */
+    private static class AdminDetailsMapper implements EntityMapper<User> {
+        @Override
+        public User mapRow(ResultSet rs) {
+            User user = new User();
+            try {
+                user.setId(rs.getInt(DBFields.SUBJECT_ADMIN_ID));
+                user.setName(rs.getString(DBFields.USER_NAME));
+                user.setSurname(rs.getString(DBFields.USER_SURNAME));
+                user.setEmail(rs.getString(DBFields.USER_EMAIL));
+                return user;
+            } catch (SQLException e) {
+                throw new IllegalStateException();
+            }
+        }
+    }
+
+    /**
      * Extracts a subject from the result set row
      */
     private static class SubjectMapper implements EntityMapper<Subject> {
+
         @Override
         public Subject mapRow(ResultSet rs) {
             Subject subject = new Subject();
@@ -265,9 +325,11 @@ public class SubjectDao {
     }
 
     public static void main(String[] args) {
-        new SubjectDao().deleteSubjectById(5);
         List<Subject> subjects = new SubjectDao().findAllSubjects();
         System.out.println(subjects);
+        System.out.println(new SubjectDao().findAllAdminDetails());
+        System.out.println(new SubjectDao().getSubjectById(20));
+
     }
 
 }

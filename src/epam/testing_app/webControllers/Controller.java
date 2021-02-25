@@ -45,15 +45,19 @@ public class Controller extends HttpServlet {
 //        log.trace("Obtained command --> " + command);
 
         // execute command and get forward address
-        String forward = command.execute(request, response);
+        Router router = command.execute(request, response);
+        String routerPage = router.getPage();
+
+        if (router.getType() == Router.Type.FORWARD) {
+            RequestDispatcher disp = request.getRequestDispatcher(routerPage);
+            disp.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + routerPage);
+        }
 //        log.trace("Forward address --> " + forward);
 
 //        log.debug("Controller finished, now go to forward address --> " + forward);
 
-        // if the forward address is not null go to the address
-        if (forward != null) {
-            RequestDispatcher disp = request.getRequestDispatcher(forward);
-            disp.forward(request, response);
-        }
+
     }
 }

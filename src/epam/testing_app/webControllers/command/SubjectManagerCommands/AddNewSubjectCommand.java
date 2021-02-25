@@ -4,6 +4,7 @@ import epam.testing_app.Path;
 import epam.testing_app.database.dao.SubjectDao;
 import epam.testing_app.database.entity.Subject;
 import epam.testing_app.database.entity.User;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 import epam.testing_app.webControllers.validator.SubjectDataValidator;
 import epam.testing_app.webControllers.validator.UserDataValidator;
@@ -19,9 +20,13 @@ public class AddNewSubjectCommand extends Command {
     private static final long serialVersionUID = 3518310435605301366L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
         if (!SubjectDataValidator.isValidSubjectParameters(request)) {
-            return Path.PAGE_ERROR_PAGE;
+            request.setAttribute("code", "404");
+            request.setAttribute("message", "invalid subject params!");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
         }
 
         HttpSession session = request.getSession();
@@ -36,9 +41,17 @@ public class AddNewSubjectCommand extends Command {
         subject.setDescriptionEN(request.getParameter("description_en"));
         subject.setNameUA(request.getParameter("name_ua"));
         subject.setNameEN(request.getParameter("name_en"));
-        subjectDao.insertSubject(subject);
+        if (!subjectDao.insertSubject(subject)) {
+            request.setAttribute("message", "cannot insert new subject");
+            request.setAttribute("code", "500");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
+        }
 
-        return Path.COMMAND_SUBJECT_LIST;
+        router.setPage(Path.COMMAND_SUBJECT_LIST);
+        router.setRedirect();
+
+        return router;
 
     }
 

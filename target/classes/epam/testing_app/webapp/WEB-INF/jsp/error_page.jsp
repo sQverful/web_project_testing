@@ -12,7 +12,6 @@
 <html>
 
 <c:set var="title" value="Error" scope="page" />
-<%@ include file="/WEB-INF/jspf/head.jspf" %>
 <head>
     <title>Error</title>
 </head>

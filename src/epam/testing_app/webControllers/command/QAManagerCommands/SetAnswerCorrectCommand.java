@@ -2,6 +2,8 @@ package epam.testing_app.webControllers.command.QAManagerCommands;
 
 import epam.testing_app.Path;
 import epam.testing_app.database.dao.AnswerDao;
+import epam.testing_app.database.dao.UserDao;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 
 import javax.servlet.ServletException;
@@ -14,21 +16,36 @@ public class SetAnswerCorrectCommand extends Command {
     private static final long serialVersionUID = -559374341102477783L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        int testID = Integer.parseInt(request.getParameter("test_id"));
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
 
+        int testID = Integer.parseInt(request.getParameter("test_id"));
         int answerId = Integer.parseInt(request.getParameter("answer_id"));
         String correct = request.getParameter("correct");
         boolean isCorrect;
         if (correct.equalsIgnoreCase("true")) {
             isCorrect = true;
-            new AnswerDao().updateAnswerCorrect(answerId, isCorrect);
+            if (!new AnswerDao().updateAnswerCorrect(answerId, isCorrect)) {
+                router.setPage(Path.PAGE_ERROR_PAGE);
+                request.setAttribute("message", "cannot change answer correct param");
+                request.setAttribute("code", "500");
+                return router;
+            }
         }
+
         if (correct.equalsIgnoreCase("false")) {
             isCorrect = false;
-            new AnswerDao().updateAnswerCorrect(answerId, isCorrect);
+            if (!new AnswerDao().updateAnswerCorrect(answerId, isCorrect)) {
+                router.setPage(Path.PAGE_ERROR_PAGE);
+                request.setAttribute("message", "cannot change answer correct param");
+                request.setAttribute("code", "500");
+                return router;
+            }
         }
-        return Path.COMMAND_QA_LIST + testID;
+
+        router.setPage(Path.COMMAND_QA_LIST + testID);
+        router.setRedirect();
+        return router;
     }
 
 }

@@ -2,6 +2,7 @@ package epam.testing_app.webControllers.command;
 
 import epam.testing_app.database.entity.Question;
 import epam.testing_app.database.entity.Test;
+import epam.testing_app.webControllers.command.ClientCommands.ShowMainPageCommand;
 import epam.testing_app.webControllers.command.QAManagerCommands.*;
 import epam.testing_app.webControllers.command.SubjectManagerCommands.*;
 import epam.testing_app.webControllers.command.TestManagerCommands.*;
@@ -19,15 +20,23 @@ public class CommandContainer {
     static {
         // common commands
         commands.put("login", new LoginCommand());
-     //   commands.put("logout", new LogoutCommand());
+        commands.put("registerPage", new RegisterPageCommand());
+        commands.put("register", new RegisterCommand());
+        commands.put("logout", new LogoutCommand());
         commands.put("noCommand", new NoCommand());
+        commands.put("notificationPass", new NotificationPassCommand());
+        commands.put("showMainPage", new ShowMainPageCommand());
 
+
+        //ADMIN ROLE COMMANDS BELOW
+        commands.put("adminPage", new ShowAdminPageCommand());
         //User commands
         commands.put("addNewUser", new AddNewUserCommand());
         commands.put("deleteUser", new DeleteUserCommand());
         commands.put("showUserEditForm", new ShowUserEditFormCommand());
         commands.put("updateUser", new UpdateUserCommand());
         commands.put("userList", new UserListCommand());
+        commands.put("setBlockedUser", new SetBlockedUserCommand());
 
 //        Subject commands
         commands.put("subjectList", new SubjectListCommand());

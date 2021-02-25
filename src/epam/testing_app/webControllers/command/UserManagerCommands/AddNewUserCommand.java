@@ -3,6 +3,7 @@ package epam.testing_app.webControllers.command.UserManagerCommands;
 import epam.testing_app.Path;
 import epam.testing_app.database.dao.UserDao;
 import epam.testing_app.database.entity.User;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 import epam.testing_app.webControllers.validator.UserDataValidator;
 
@@ -15,9 +16,13 @@ public class AddNewUserCommand extends Command {
     private static final long serialVersionUID = 4587586284500180711L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
         if (!UserDataValidator.isValidUserParameters(request)) {
-            return Path.PAGE_ERROR_PAGE;
+            request.setAttribute("message", "invalid parameters");
+            request.setAttribute("code", "404");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
         }
 
         String login = request.getParameter("login");
@@ -32,8 +37,22 @@ public class AddNewUserCommand extends Command {
         int roleId = Integer.parseInt(request.getParameter("role_id"));
 
         User user = User.createUser(login, name, surname, email, password, blocked, roleId);
-        new UserDao().insertUser(user);
+        UserDao userDao = new UserDao();
+        if (userDao.getUserByLogin(login) != null) {
+            request.setAttribute("registrationIncorrectLogin", true);
+            router.setPage(Path.COMMAND_USER_LIST);
+            router.setRedirect();
+            return router;
+        }
+        if (!userDao.insertUser(user)) {
+            request.setAttribute("message", "cannot insert user");
+            request.setAttribute("code", "500");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
+        }
 
-        return new UserListCommand().execute(request, response);
+        router.setPage(Path.COMMAND_USER_LIST);
+        router.setRedirect();
+        return router;
     }
 }

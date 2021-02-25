@@ -4,6 +4,7 @@ import epam.testing_app.Path;
 import epam.testing_app.database.dao.UserDao;
 import epam.testing_app.database.entity.Role;
 import epam.testing_app.database.entity.User;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 
 import javax.servlet.RequestDispatcher;
@@ -17,10 +18,12 @@ public class UserListCommand extends Command {
     private static final long serialVersionUID = -1652184806021602282L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
         List<User> userList = new UserDao().findAllUsers();
         request.setAttribute("userList", userList);
 
-        return Path.PAGE_ADMIN_USER_LIST;
+        router.setPage(Path.PAGE_ADMIN_USER_LIST);
+        return router;
     }
 }

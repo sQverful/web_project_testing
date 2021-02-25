@@ -1,5 +1,7 @@
 package epam.testing_app.webControllers.command;
 
+import epam.testing_app.webControllers.Router;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +20,7 @@ public abstract class Command implements Serializable {
      * Execution method for command.
      * @return Address to go once the command is executed.
      */
-    public abstract String execute(HttpServletRequest request, HttpServletResponse response)
+    public abstract Router execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException;
 
     @Override

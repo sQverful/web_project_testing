@@ -3,6 +3,7 @@ package epam.testing_app.webControllers.command.TestManagerCommands;
 import epam.testing_app.Path;
 import epam.testing_app.database.dao.TestDao;
 import epam.testing_app.database.entity.Test;
+import epam.testing_app.webControllers.Router;
 import epam.testing_app.webControllers.command.Command;
 import epam.testing_app.webControllers.validator.TestDataValidator;
 
@@ -15,9 +16,13 @@ public class UpdateTestCommand extends Command {
     private static final long serialVersionUID = -1498725054150894969L;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Router router = new Router();
         if (TestDataValidator.isValidTestParameters(request)) {
-            return Path.PAGE_ERROR_PAGE;
+            request.setAttribute("message", "invalid parameters");
+            request.setAttribute("code", "404");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
         }
 
         int id = Integer.parseInt(request.getParameter("id"));
@@ -36,7 +41,14 @@ public class UpdateTestCommand extends Command {
         Test test = Test.createTest(nameEN, nameUA, descriptionEN, descriptionUA, subjectId, blocked, complexity, timer);
         test.setId(id);
 
-        new TestDao().updateTest(test);
-        return Path.COMMAND_TEST_LIST;
+        if (!new TestDao().updateTest(test)) {
+            request.setAttribute("message", "cannot update test");
+            request.setAttribute("code", "500");
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
+        }
+        router.setPage(Path.COMMAND_TEST_LIST);
+        router.setRedirect();
+        return router;
     }
 }
