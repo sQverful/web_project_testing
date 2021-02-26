@@ -4,6 +4,7 @@ package epam.testing_app.webControllers.command;
 import epam.testing_app.webControllers.command.AdminCommands.ShowAdminPageCommand;
 import epam.testing_app.webControllers.command.ClientCommands.ShowMainPageCommand;
 import epam.testing_app.webControllers.command.ClientCommands.SubjectPageCommand;
+import epam.testing_app.webControllers.command.ClientCommands.TestPageCommand;
 import epam.testing_app.webControllers.command.ClientCommands.UserProfileCommand;
 import epam.testing_app.webControllers.command.AdminCommands.QAManagerCommands.*;
 import epam.testing_app.webControllers.command.AdminCommands.SubjectManagerCommands.*;
@@ -68,6 +69,8 @@ public class CommandContainer {
 //        STUDENT ROLE COMMANDS BELOW
         commands.put("userProfile", new UserProfileCommand());
         commands.put("subjectPage", new SubjectPageCommand());
+        commands.put("testPage", new TestPageCommand());
+
 
 //        log.debug("Command container was successfully initialized");
 //        log.trace("Number of commands --> " + commands.size());

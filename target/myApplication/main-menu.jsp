@@ -34,10 +34,10 @@
 								<p class="card-text">${subject.descriptionEN}</p>
 								<a href="${pageContext.request.contextPath}/controller?command=subjectPage&id=${subject.id}" class="btn btn-primary btn-sm">See available tests</a>
 							</div>
-							<div class="card-footer text-muted">
+							<div class="card-footer text-muted small">
 								Created: ${subject.createdOn}
-							</div>
-							<div class="card-footer text-muted">
+                        </div>
+							<div class="card-footer text-muted small">
 								By:
 								<button type="button" class="btn btn-outline-dark btn-sm" data-container="body" data-toggle="popover" data-placement="right" data-content="${adminDetails[status.index].email}" title="Contact info">
 										${adminDetails[status.index].name} ${adminDetails[status.index].surname}

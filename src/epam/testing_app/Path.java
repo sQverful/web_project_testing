@@ -29,15 +29,21 @@ public class Path {
     //User Pages
     public static final String PAGE_USER_PROFILE = "/user-profile.jsp";
     public static final String PAGE_USER_SUBJECT = "/subject-page.jsp";
+    public static final String PAGE_USER_TEST = "/test-page.jsp";
 
 
-    // commands
+
+    // commands for admin
     public static final String COMMAND_SHOW_ADMIN_PAGE =  "/controller?command=adminPage";
     public static final String COMMAND_SHOW_MAIN_PAGE =  "/controller?command=showMainPage";
     public static final String COMMAND_USER_LIST =  "/controller?command=userList";
     public static final String COMMAND_SUBJECT_LIST =  "/controller?command=subjectList";
     public static final String COMMAND_TEST_LIST =  "/controller?command=testList";
     public static final String COMMAND_QA_LIST = "/controller?command=QAList&id=";
+
+    // commands for user
+    public static final String COMMAND_SHOW_TEST_PAGE=  "/controller?command=testPage&id=";
+
 
     //Notification commands
     public static final String NOTIFICATION_REGISTERED = "/controller?command=notificationPass&registered=true";

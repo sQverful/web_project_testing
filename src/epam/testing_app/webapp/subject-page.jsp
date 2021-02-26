@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="title">
-                            <h4>Profile</h4>
+                            <h4>Subject page</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -95,7 +95,7 @@
                                                                 </td>
                                                                 <td><c:out value="${test.createdOn}"/></td>
                                                                 <td>
-                                                                    <a class="btn-sm btn-info" href="${pageContext.request.contextPath}/controller?command=openTestPage&id=${test.id}">
+                                                                    <a class="btn-sm btn-info" href="${pageContext.request.contextPath}/controller?command=testPage&id=${test.id}">
                                                                         Pass test
                                                                     </a>
                                                                 </td>
