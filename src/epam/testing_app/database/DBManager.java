@@ -99,14 +99,6 @@ public class DBManager {
         }
     }
 
-    public static class Int {
-        double test;
-        boolean bol;
-
-        public void badMethod() {
-            throw new Error();
-        }
-    }
 
 
 

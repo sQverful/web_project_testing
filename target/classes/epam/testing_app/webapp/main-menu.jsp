@@ -32,7 +32,7 @@
 							<h5 class="card-header weight-500">${subject.nameEN}</h5>
 							<div class="card-body">
 								<p class="card-text">${subject.descriptionEN}</p>
-								<a href="${pageContext.request.contextPath}/controller?command=openSubjectPage" class="btn btn-primary btn-sm">See available tests</a>
+								<a href="${pageContext.request.contextPath}/controller?command=subjectPage&id=${subject.id}" class="btn btn-primary btn-sm">See available tests</a>
 							</div>
 							<div class="card-footer text-muted">
 								Created: ${subject.createdOn}

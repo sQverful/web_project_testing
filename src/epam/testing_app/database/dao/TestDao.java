@@ -23,6 +23,10 @@ public class TestDao {
     private static final String SQL_FIND_TEST_BY_ID =
             "SELECT * FROM test WHERE id=?";
 
+    private static final String SQL_FIND_ALL_TESTS_BY_SUBJECT_ID =
+            "SELECT * FROM test WHERE subject_id=?";
+
+
     private static final String SQL_UPDATE_TEST =
             "UPDATE test SET name_ua=?, name_en=?, complexity=?, blocked=?, timer=?, description_ua=?, description_en=?"+
                     " WHERE id=?";
@@ -38,6 +42,32 @@ public class TestDao {
 
     private static final String SQL_FIND_ALL_TESTS = "SELECT * FROM test";
 
+    public List<Test> findAllTestsBySubjectID(int subjectID) {
+
+        List<Test> tests = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        TestMapper mapper = new TestMapper();
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_FIND_ALL_TESTS_BY_SUBJECT_ID);
+            pstmt.setInt(1, subjectID);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                tests.add(mapper.mapRow(rs));
+            }
+
+            pstmt.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tests;
+    }
 
     public List<Test> findAllTests() {
         List<Test> tests = new ArrayList<>();

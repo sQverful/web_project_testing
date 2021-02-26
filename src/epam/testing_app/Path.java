@@ -28,6 +28,8 @@ public class Path {
 
     //User Pages
     public static final String PAGE_USER_PROFILE = "/user-profile.jsp";
+    public static final String PAGE_USER_SUBJECT = "/subject-page.jsp";
+
 
     // commands
     public static final String COMMAND_SHOW_ADMIN_PAGE =  "/controller?command=adminPage";
