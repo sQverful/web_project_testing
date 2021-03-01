@@ -42,6 +42,40 @@ public class TestDao {
 
     private static final String SQL_FIND_ALL_TESTS = "SELECT * FROM test";
 
+    private static final String SQL_INSERT_NEW_REQUEST_QUANTITY = "INSERT INTO test " +
+            "(requests_quantity) VALUES (?)";
+
+
+    public boolean addNewRequestQuantity() {
+        boolean result = false;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_INSERT_NEW_REQUEST_QUANTITY, Statement.RETURN_GENERATED_KEYS);
+            rs = pstmt.getGeneratedKeys();
+            int counter = 0;
+            if (rs.next()) {
+                counter = rs.getInt(1);
+            }
+
+            pstmt.setInt(1, counter);
+            if (pstmt.executeUpdate() > 0) {
+                result = true;
+            }
+
+            rs.close();
+            pstmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     public List<Test> findAllTestsBySubjectID(int subjectID) {
 
         List<Test> tests = new ArrayList<>();

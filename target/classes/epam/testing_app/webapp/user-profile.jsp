@@ -87,6 +87,7 @@
 														<table class="data-table table stripe hover nowrap">
 															<thead>
 															<tr>
+																<th>№</th>
 																<th>Subject name</th>
 																<th>Test name</th>
 																<th>Create time</th>
@@ -95,12 +96,22 @@
 															</tr>
 															</thead>
 															<tbody>
-<%--															<c:forEach var="" items="">--%>
-																<tr>
-																	<td><c:out value=""/></td>
-																	<td><c:out value=""/></td>
-																	<td><c:out value=""/></td>
-																	<td><c:out value=""/></td>
+
+															<c:set var="counter" value="0" scope="page"/>
+															<c:forEach var="testResult" items="${testResultList}">
+															<c:forEach var="subject" items="${subjectList}">
+															<c:forEach var="test" items="${testsList}">
+
+															<tr>
+																<c:if test="${testResult.testId == test.id}">
+																<c:if test="${subject.id == test.subjectId}">
+
+																<c:set var="counter" value="${counter + 1}" scope="page"/>
+																	<td>${counter}</td>
+																	<td>${test.subjectId == subject.id ? subject.nameEN : ""}</td>
+																	<td>${testResult.testId == test.id ? test.nameEN : ""}</td>
+																	<td>${testResult.createdOn}</td>
+																	<td>${testResult.result}</td>
 																	<td>
 																		<div class="dropdown">
 																			<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -116,8 +127,12 @@
 																			</form>
 																		</div>
 																	</td>
-																</tr>
-<%--															</c:forEach>--%>
+																</c:if>
+																</c:if>
+															</tr>
+															</c:forEach>
+															</c:forEach>
+															</c:forEach>
 															</tbody>
 														</table>
 													</div>

@@ -7,47 +7,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4652f9c-2935-404b-b162-3a65d29de804" name="Default Changelist" comment="Front+back improvements">
-      <change afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/StartTestCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/SubmitTestCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/Path.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/database/dao/AnswerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/database/dao/AnswerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/database/dao/DBFields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/database/dao/DBFields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/database/dao/TestDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/database/dao/TestDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/database/dao/TestResultsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/database/dao/TestResultsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/database/entity/TestResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/database/entity/TestResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/TestPageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/TestPageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/CommandContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/CommandContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/NotificationPassCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/NotificationPassCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/StartTestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/StartTestCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/SubmitTestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/SubmitTestCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/UserProfileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/ClientCommands/UserProfileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/LoginCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/RegisterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/command/RegisterCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webControllers/filter/CommandAccessFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webControllers/filter/CommandAccessFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/jsp/error_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/WEB-INF/jsp/error_page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/notification-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/notification-page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/subject-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/subject-page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/test-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/test-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/epam/testing_app/webapp/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/epam/testing_app/webapp/user-profile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/Path.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/AnswerDao$AnswerMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/AnswerDao$AnswerMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/AnswerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/AnswerDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/TestDao$TestMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/TestDao$TestMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/TestDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/TestDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/TestResultsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/database/dao/TestResultsDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/ClientCommands/TestPageCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/ClientCommands/TestPageCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/CommandContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/CommandContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/NotificationPassCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/NotificationPassCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/ClientCommands/StartTestCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/ClientCommands/StartTestCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/ClientCommands/SubmitTestCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/ClientCommands/SubmitTestCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/ClientCommands/UserProfileCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/ClientCommands/UserProfileCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/LoginCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/LoginCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/RegisterCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/command/RegisterCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/filter/CommandAccessFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webControllers/filter/CommandAccessFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/jsp/error_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/WEB-INF/jsp/error_page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/notification-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/notification-page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/subject-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/subject-page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/test-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/test-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/epam/testing_app/webapp/user-profile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/Path.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/dao/AnswerDao$AnswerMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/dao/AnswerDao$AnswerMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/dao/AnswerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/dao/AnswerDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/ClientCommands/TestPageCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/ClientCommands/TestPageCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/CommandContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/CommandContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/NotificationPassCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/NotificationPassCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/dao/TestDao$TestMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/dao/TestDao$TestMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/dao/TestDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/database/dao/TestDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/ClientCommands/StartTestCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/ClientCommands/StartTestCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/ClientCommands/SubmitTestCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/ClientCommands/SubmitTestCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/ClientCommands/UserProfileCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/ClientCommands/UserProfileCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/LoginCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/LoginCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/RegisterCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/command/RegisterCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/filter/CommandAccessFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webControllers/filter/CommandAccessFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/jsp/error_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/WEB-INF/jsp/error_page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/notification-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/notification-page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/subject-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/subject-page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/test-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/test-page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/classes/epam/testing_app/webapp/user-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/WEB-INF/jsp/error_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/WEB-INF/jsp/error_page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/notification-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/notification-page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myApplication/subject-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/subject-page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/myApplication/test-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/test-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/myApplication/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myApplication/user-profile.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -346,7 +352,7 @@
       <workItem from="1613039477145" duration="10569000" />
       <workItem from="1613391394848" duration="28369000" />
       <workItem from="1613565785309" duration="42518000" />
-      <workItem from="1613749409765" duration="149746000" />
+      <workItem from="1613749409765" duration="157218000" />
     </task>
     <servers />
   </component>
@@ -394,16 +400,6 @@
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/epam/testing_app/webapp/notification-page.jsp</url>
-          <line>47</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/epam/testing_app/webControllers/command/RegisterCommand.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/epam/testing_app/webapp/admin/questionManager.jsp</url>
           <line>110</line>
           <option name="timeStamp" value="57" />
@@ -423,14 +419,6 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/epam/testing_app/webControllers/command/RegisterCommand.java</url>
-          <line>18</line>
-          <properties class="epam.testing_app.webControllers.command.RegisterCommand" method="execute">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -228,6 +228,35 @@
                     </div>
                     <%--Timer div ends--%>
                 </c:if>
+
+            <c:if test="${!isStarted}">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 mb-30">
+                    <div class="pd-20 card-box height-100-p">
+                        <div class="card card-box">
+                            <h5 class="card-header weight-500">${selectedTest.nameEN}</h5>
+                            <div class="card-body">
+                                <p class="card-text">${selectedTest.descriptionEN}</p>
+                            </div>
+                            <div class="card-footer text-muted small">
+                                Complexity: ${selectedTest.complexity}
+                                <br>
+                                Status:
+                                <c:if test="${selectedTest.blocked eq 'false'}">
+                                    <input type="button" class="btn-success btn-xs" value="Opened">
+                                </c:if>
+                                <c:if test="${selectedTest.blocked eq 'true'}">
+                                    <input type="button" class="btn-warning btn-xs" value="Closed">
+                                </c:if>
+                                <br>
+                                Requests quantity: ${selectedTest.requestsQuantity}
+                            </div>
+                            <div class="card-footer text-muted small">
+                                Created: ${selectedTest.createdOn}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
             </div>
         </div>
     </div>

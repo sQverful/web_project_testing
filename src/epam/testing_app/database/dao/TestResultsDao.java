@@ -59,6 +59,32 @@ public class TestResultsDao {
         return testResult;
     }
 
+    public List<TestResult> finaAllTestResultsByUserID(int userID) {
+        List<TestResult> testResults = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        TestResultsMapper mapper = new TestResultsMapper();
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL_FIND_TEST_RESULT_BY_ID);
+            pstmt.setInt(1, userID);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                testResults.add(mapper.mapRow(rs));
+            }
+
+            rs.close();
+            pstmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return testResults;
+    }
+
     public List<TestResult> findAllTestResultsByUserIDAndTestID(int userID, int testID) {
         List<TestResult> testResults = new ArrayList<>();
         Connection con = null;

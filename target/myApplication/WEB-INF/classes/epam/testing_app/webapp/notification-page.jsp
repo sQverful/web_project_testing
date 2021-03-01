@@ -29,7 +29,7 @@
 <c:if test="${showResultNotificationFail}">
     <%@ include file="WEB-INF/jsp/user-navbar.jsp"%>
     <div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading h4">Unfortunately timer has expired. Your result = 0:(</h4>
+        <h4 class="alert-heading h4">Unfortunately timer has expired. Your result = 0% :(</h4>
         <p class="mb-0">
             <strong>Your result: ${testResult.result}%</strong>
             <br>
@@ -39,13 +39,34 @@
     </div>
 </c:if>
 
-<div class="wrapper">
-    <div class="container notification-page">
-        <c:if test="${registrationSuccess}">
-            <label class="alert-success">You are successfully registered.!</label>
-        </c:if>
-
+<c:if test="${testBlockedNotification}">
+    <%@ include file="WEB-INF/jsp/user-navbar.jsp"%>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading h4">This test is blocked!</h4>
     </div>
+</c:if>
+
+
+<div class="wrapper">
+        <c:if test="${registrationSuccess}">
+            <div class="login-header box-shadow">
+                <div class="container-fluid d-flex justify-content-between align-items-center">
+                    <div class="brand-logo">
+                        <a href="${pageContext.request.contextPath}">
+                            <img src="admin/vendors/images/deskapp-logo.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="login-menu">
+                        <ul>
+                            <li><a href="register.jsp">Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading h4">You have successfully registered!</h4>
+            </div>
+        </c:if>
 </div>
 
 

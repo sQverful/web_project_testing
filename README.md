@@ -54,4 +54,4 @@ answered the question if his answer coincides exactly with the correct answers).
 - Tomcat 8.5.63
 - Servlets + JSP
 - JDBC (mysql-connector-java, v.8.0.22)
-- Front-end is taken from open-source solution developed by Ankit Hingarajiya (https://github.com/dropways)
+- Front-end was developed on the basis of open-source solution https://github.com/dropways

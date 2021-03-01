@@ -50,7 +50,7 @@ public class CommandAccessFilter implements Filter {
             String code = "404";
 
             servletRequest.setAttribute("message", message);
-            servletRequest.setAttribute("code", "404");
+            servletRequest.setAttribute("code", "401");
 
             servletRequest.getRequestDispatcher(Path.PAGE_ERROR_PAGE)
                     .forward(servletRequest, servletResponse);

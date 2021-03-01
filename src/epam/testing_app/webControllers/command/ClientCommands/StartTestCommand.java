@@ -29,10 +29,17 @@ public class StartTestCommand extends Command {
 
         HttpSession session = request.getSession();
 
-
-        Test selectedTest = new TestDao().getTestById(testID);
+        TestDao testDao = new TestDao();
+        Test selectedTest = testDao.getTestById(testID);
 
         List<Question> questionList = new QuestionDao().findAllQuestionsByTestId(testID);
+
+        // in case if user tries to get blocked test he gets notification page
+        if (selectedTest.isBlocked()) {
+            router.setPage(Path.NOTIFICATION_TEST_BLOCKED);
+            router.setRedirect();
+            return router;
+        }
 
         request.setAttribute("selectedTest", selectedTest);
         request.setAttribute("selectedSubject", new SubjectDao().getSubjectById(selectedTest.getSubjectId()));
@@ -46,11 +53,12 @@ public class StartTestCommand extends Command {
             Timestamp timeEnd = new Timestamp(timeStart.getTime() + selectedTest.getTimer() * 60_000);
             session.setAttribute("timeStart", timeStart);
             session.setAttribute("timeEnd", timeEnd);
+            testDao.addNewRequestQuantity();
         }
 
         if (!session.getAttribute("timerID").equals(testID)) {
             request.setAttribute("message", "you have another test launched");
-            request.setAttribute("code", "404");
+            request.setAttribute("code", "403");
             router.setPage(Path.PAGE_ERROR_PAGE);
             return router;
         }

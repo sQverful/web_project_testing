@@ -47,6 +47,7 @@ public class Path {
 
     //Notification commands
     public static final String NOTIFICATION_REGISTERED = "/controller?command=notificationPass&registered=true";
+    public static final String NOTIFICATION_TEST_BLOCKED = "/controller?command=notificationPass&testBlockedNotification=true";
     public static final String NOTIFICATION_TEST_SUBMITTED = "/controller?command=notificationPass&showResultNotification=true";
     public static final String NOTIFICATION_TEST_SUBMITTED_FAIL = "/controller?command=notificationPass&showResultNotificationFail=true";
 

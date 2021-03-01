@@ -45,6 +45,15 @@ public class LoginCommand extends Command {
         User user = new UserDao().getUserByLogin(login);
 //        log.trace("Found in DB: user -->" + user);
 
+        // if user blocked
+        if (user.isBlocked()) {
+            request.setAttribute("message", "Sorry, but for some reason you are banned. " +
+                    "Please, contact system moderator.");
+            request.setAttribute("code", 403);
+            router.setPage(Path.PAGE_ERROR_PAGE);
+            return router;
+        }
+
 
         if (user == null || !password.equals(user.getPassword())) {
             errorMessage = "Cannot find user with such login/password";

@@ -44,7 +44,7 @@ public class RegisterCommand extends Command {
 
         userDao.insertUser(user);
         request.setAttribute("registrationSuccess", true);
-        router.setPage(Path.PAGE_NOTIFICATION);
+        router.setPage(Path.NOTIFICATION_REGISTERED);
         return router;
     }
 }
