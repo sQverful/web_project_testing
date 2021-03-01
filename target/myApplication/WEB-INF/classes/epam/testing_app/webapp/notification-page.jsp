@@ -10,15 +10,35 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
-<head>
-    <title>Testify. Notification</title>
+<%@ include file="WEB-INF/jsp/client-head.jsp"%>
 
-    <link rel="stylesheet" type="text/css" href="admin/vendors/styles/core.css">
-    <link rel="stylesheet" type="text/css" href="admin/vendors/styles/icon-font.min.css">
-    <link rel="stylesheet" type="text/css" href="admin/src/plugins/jquery-steps/jquery.steps.css">
-    <link rel="stylesheet" type="text/css" href="admin/vendors/styles/style.css">
-</head>
 <body>
+<c:if test="${showResultNotification}">
+    <%@ include file="WEB-INF/jsp/user-navbar.jsp"%>
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading h4">You have successfully submitted test!</h4>
+        <p class="mb-0">
+            <strong>Your result: ${testResult.result}%</strong>
+            <br>
+            Please, check your result in <a class="alert-link"
+                                            href="${pageContext.request.contextPath}/controller?command=testPage&id=${testResult.testId}">Results tab</a>
+        </p>
+    </div>
+</c:if>
+
+<c:if test="${showResultNotificationFail}">
+    <%@ include file="WEB-INF/jsp/user-navbar.jsp"%>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading h4">Unfortunately timer has expired. Your result = 0:(</h4>
+        <p class="mb-0">
+            <strong>Your result: ${testResult.result}%</strong>
+            <br>
+            You can check your result in <a class="alert-link"
+                                            href="${pageContext.request.contextPath}/controller?command=testPage&id=${testResult.testId}">Results tab</a>
+        </p>
+    </div>
+</c:if>
+
 <div class="wrapper">
     <div class="container notification-page">
         <c:if test="${registrationSuccess}">
@@ -28,5 +48,11 @@
     </div>
 </div>
 
+
+<!-- js -->
+<script src="admin/vendors/scripts/core.js"></script>
+<script src="admin/vendors/scripts/script.min.js"></script>
+<script src="admin/vendors/scripts/process.js"></script>
+<script src="admin/vendors/scripts/layout-settings.js"></script>
 </body>
 </html>

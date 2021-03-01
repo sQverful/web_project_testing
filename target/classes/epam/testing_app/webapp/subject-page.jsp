@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="title">
-                            <h4>Profile</h4>
+                            <h4>Subject page</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -87,10 +87,10 @@
                                                                 <td><c:out value="${test.requestsQuantity}"/></td>
                                                                 <td>
                                                                     <c:if test="${test.blocked eq 'false'}">
-                                                                            <input type="button" class="btn btn-success btn-sm" value="Opened">
+                                                                            <input type="button" class="btn btn-sm btn-success" value="Opened">
                                                                     </c:if>
                                                                     <c:if test="${test.blocked eq 'true'}">
-                                                                            <input type="button" class="btn btn-warning btn-sm" value="Closed">
+                                                                            <input type="button" class="btn btn-sm btn-warning" value="Closed">
                                                                     </c:if>
                                                                 </td>
                                                                 <td><c:out value="${test.createdOn}"/></td>

@@ -1,6 +1,9 @@
 package epam.testing_app.webControllers.command;
 
 import epam.testing_app.Path;
+import epam.testing_app.database.dao.TestResultsDao;
+import epam.testing_app.database.entity.TestResult;
+import epam.testing_app.database.entity.User;
 import epam.testing_app.webControllers.Router;
 
 import javax.servlet.ServletException;
@@ -18,6 +21,34 @@ public class NotificationPassCommand extends Command {
 
         if (request.getParameter("registered") != null) {
             request.setAttribute("registrationSuccess", true);
+        }
+
+        if (request.getParameter("showResultNotification") != null && request.getParameter("testResult") != null) {
+            request.setAttribute("showResultNotification", true);
+            int testResultID = Integer.parseInt(request.getParameter("testResult"));
+            TestResult testResult = new TestResultsDao().getTestResultByID(testResultID);
+            User currentUser = (User) request.getSession().getAttribute("user");
+            if (currentUser.getId() != testResult.getUserId()) {
+                request.setAttribute("message", "permission error");
+                request.setAttribute("code", "404");
+                router.setPage(Path.PAGE_ERROR_PAGE);
+                return router;
+            }
+            request.setAttribute("testResult", testResult);
+        }
+
+        if (request.getParameter("showResultNotificationFail") != null && request.getParameter("testResult") != null) {
+            request.setAttribute("showResultNotificationFail", true);
+            int testResultID = Integer.parseInt(request.getParameter("testResult"));
+            TestResult testResult = new TestResultsDao().getTestResultByID(testResultID);
+            User currentUser = (User) request.getSession().getAttribute("user");
+            if (currentUser.getId() != testResult.getUserId()) {
+                request.setAttribute("message", "permission error");
+                request.setAttribute("code", "404");
+                router.setPage(Path.PAGE_ERROR_PAGE);
+                return router;
+            }
+            request.setAttribute("testResult", testResult);
         }
 
         router.setPage(Path.PAGE_NOTIFICATION);

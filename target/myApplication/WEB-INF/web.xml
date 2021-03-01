@@ -40,11 +40,11 @@
             </init-param>
             <init-param>
                 <param-name>client</param-name>
-                <param-value>showMainPage</param-value>
+                <param-value>showMainPage startTest submitTest</param-value>
             </init-param>
             <init-param>
                 <param-name>common</param-name>
-                <param-value>logout noCommand viewSettings updateSettings userProfile subjectPage testPage</param-value>
+                <param-value>logout noCommand viewSettings updateSettings userProfile subjectPage testPage notificationPass</param-value>
             </init-param>
             <init-param>
                 <param-name>out-of-control</param-name>

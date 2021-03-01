@@ -42,11 +42,15 @@ public class Path {
     public static final String COMMAND_QA_LIST = "/controller?command=QAList&id=";
 
     // commands for user
-    public static final String COMMAND_SHOW_TEST_PAGE=  "/controller?command=testPage&id=";
+    public static final String COMMAND_SHOW_TEST_PAGE =  "/controller?command=testPage&id=";
 
 
     //Notification commands
     public static final String NOTIFICATION_REGISTERED = "/controller?command=notificationPass&registered=true";
+    public static final String NOTIFICATION_TEST_SUBMITTED = "/controller?command=notificationPass&showResultNotification=true";
+    public static final String NOTIFICATION_TEST_SUBMITTED_FAIL = "/controller?command=notificationPass&showResultNotificationFail=true";
+
+
 
 
 }

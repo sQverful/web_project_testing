@@ -2,10 +2,14 @@ package epam.testing_app.database.dao;
 
 import epam.testing_app.database.DBManager;
 import epam.testing_app.database.entity.Answer;
+import epam.testing_app.database.entity.Question;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 /**
  * Data access object for Answer
@@ -40,6 +44,23 @@ public class AnswerDao {
             "VALUES(?, ?, ?, ?, ?)";
     private static final String SQL_DELETE_ANSWER_BY_ID = "DELETE FROM answer WHERE id=?";
 
+    public List<Answer> getAnswersListByQuestionList(List<Question> questionList) {
+        List<Answer> answerList = new ArrayList<>();
+        List<Answer> foundedList = null;
+        for (Question q : questionList) {
+            foundedList = findAllAnswersByQuestionId(q.getId());
+            answerList.addAll(foundedList);
+        }
+        return answerList;
+    }
+
+    public Map<Question, List<Answer>> getAnswersMapByQuestionList(List<Question> questionList) {
+        Map<Question, List<Answer>> map = new HashMap<>();
+        for (Question q : questionList) {
+            map.put(q, findAllAnswersByQuestionId(q.getId()));
+        }
+        return map;
+    }
 
     public List<Answer> findAllAnswersByQuestionId(int questionId) {
         List<Answer> answerList = new ArrayList<>();
@@ -297,7 +318,9 @@ public class AnswerDao {
     public static void main(String[] args) {
         Answer answer = Answer.createAnswer("test", "тест", true, 1);
         AnswerDao answerDao = new AnswerDao();
-        System.out.println(answerDao.updateAnswerCorrect(1, false));
+        List<Question> questionList = new QuestionDao().findAllQuestionsByTestId(4);
+        System.out.println(questionList);
+        System.out.println(answerDao.getAnswersListByQuestionList(questionList));
 //        System.out.println(answerDao.insertAnswer(answer));
     }
 
