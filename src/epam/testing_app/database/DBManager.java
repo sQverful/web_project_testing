@@ -3,6 +3,10 @@ package epam.testing_app.database;
 import org.apache.log4j.Logger;
 
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -38,32 +42,18 @@ public class DBManager {
      * @return A DB connection.
      */
     public Connection getConnection() {
+
         Connection con = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(getConnectionProperty());
-        } catch (SQLException | ClassNotFoundException e) {
-           // log.error("Cannot get a connection", e);
+            Context initContext = new InitialContext();
+            Context envContext = (Context) initContext.lookup("java:/comp/env");
+
+            DataSource ds = (DataSource) envContext.lookup("jdbc/testing");
+            con = ds.getConnection();
+        } catch (SQLException | NamingException e) {
+            e.printStackTrace();
         }
         return con;
-    }
-
-    /**
-     * Gets connection URL for mysql
-     * @return A DB connection URL
-     */
-    public String getConnectionProperty() {
-//        Properties properties = new Properties();
-//        try (FileInputStream fileInputStream = new FileInputStream("src/app.properties")) {
-//            properties.load(fileInputStream);
-//            return properties.getProperty("connection.url");
-//        } catch (IOException exception) {
-//            exception.getMessage();
-//            return null;
-//        }
-
-        //TODO: чомусь не находить проперті в app.properties коли тестуєш через томкет
-        return "jdbc:mysql://127.0.0.1:3306/testing?useSSL=false&user=root&password=root&useUnicode=true&serverTimezone=UTC";
     }
 
 
@@ -99,6 +89,9 @@ public class DBManager {
         }
     }
 
+    public static void main(String[] args) {
+
+    }
 
 
 

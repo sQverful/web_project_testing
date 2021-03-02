@@ -69,6 +69,7 @@ public class CommandContainer {
         commands.put("testPage", new TestPageCommand());
         commands.put("startTest", new StartTestCommand());
         commands.put("submitTest", new SubmitTestCommand());
+        commands.put("updateRegisterInfo", new UpdateRegisterInfo());
 
 
 

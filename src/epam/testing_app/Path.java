@@ -40,6 +40,8 @@ public class Path {
     public static final String COMMAND_SUBJECT_LIST =  "/controller?command=subjectList";
     public static final String COMMAND_TEST_LIST =  "/controller?command=testList";
     public static final String COMMAND_QA_LIST = "/controller?command=QAList&id=";
+    public static final String COMMAND_SHOW_REGISTER =  "/controller?command=registerPage";
+
 
     // commands for user
     public static final String COMMAND_SHOW_TEST_PAGE =  "/controller?command=testPage&id=";
@@ -50,6 +52,10 @@ public class Path {
     public static final String NOTIFICATION_TEST_BLOCKED = "/controller?command=notificationPass&testBlockedNotification=true";
     public static final String NOTIFICATION_TEST_SUBMITTED = "/controller?command=notificationPass&showResultNotification=true";
     public static final String NOTIFICATION_TEST_SUBMITTED_FAIL = "/controller?command=notificationPass&showResultNotificationFail=true";
+    public static final String NOTIFICATION_UPDATE_REGISTER_FAIL = "/controller?command=notificationPass&updateRegisterInfoFail=true";
+    public static final String NOTIFICATION_UPDATE_REGISTER_SUCCESS = "/controller?command=notificationPass&updateRegisterInfoSuccess=true";
+
+
 
 
 

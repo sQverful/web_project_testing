@@ -51,6 +51,14 @@ public class NotificationPassCommand extends Command {
             request.setAttribute("testResult", testResult);
         }
 
+        if (request.getParameter("updateRegisterInfoFail") != null) {
+            request.setAttribute("updateRegisterInfoFail", true);
+        }
+
+        if (request.getParameter("updateRegisterInfoSuccess") != null) {
+            request.setAttribute("updateRegisterInfoSuccess", true);
+        }
+
         router.setPage(Path.PAGE_NOTIFICATION);
         return router;
     }

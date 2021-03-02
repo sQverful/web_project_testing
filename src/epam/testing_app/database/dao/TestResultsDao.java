@@ -19,7 +19,7 @@ public class TestResultsDao {
 
     private static final String SQL_FIND_ALL_TEST_RESULTS = "SELECT * FROM test_result";
 
-    private static final String SQL_FIND_TEST_RESULT_BY_ID = "SELECT * FROM test_result WHERE id=?";
+    private static final String SQL_FIND_TEST_RESULT_BY_ID = "SELECT * FROM test_result WHERE user_id=?";
 
     private static final String SQL_FIND_ALL_TEST_RESULTS_BY_USER_AND_TEST_ID = "SELECT * FROM test_result WHERE user_id=? AND test_id=?";
 
