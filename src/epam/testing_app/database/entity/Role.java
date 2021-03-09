@@ -27,5 +27,6 @@ public enum Role {
         User user = User.createUser("test", "test", "test",
                 "test@test.com", "test", false, 1);
         System.out.println(Role.getRole(user));
+
     }
 }

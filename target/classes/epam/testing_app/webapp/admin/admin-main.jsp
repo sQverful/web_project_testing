@@ -4,7 +4,7 @@
 <body>
 	<div class="pre-loader">
 		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
+			<div class="loader-logo"><img src="${pageContext.request.contextPath}/admin/vendors/images/deskapp-logo.svg" alt=""></div>
 			<div class='loader-progress' id="progress_div">
 				<div class='bar' id='bar1'></div>
 			</div>
@@ -24,7 +24,7 @@
 			<div class="card-box pd-20 height-100-p mb-30">
 				<div class="row align-items-center">
 					<div class="col-md-4">
-						<img src="vendors/images/banner-img.png" alt="">
+						<img src="${pageContext.request.contextPath}/admin/vendors/images/banner-img.png" alt="">
 					</div>
 					<div class="col-md-8">
 						<h4 class="font-20 weight-500 mb-10 text-capitalize">
@@ -37,15 +37,15 @@
 	</div>
 	
 	<!-- js -->
-	<script src="vendors/scripts/core.js"></script>
-	<script src="vendors/scripts/script.min.js"></script>
-	<script src="vendors/scripts/process.js"></script>
-	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/apexcharts/apexcharts.min.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<script src="vendors/scripts/dashboard.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/vendors/scripts/core.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/vendors/scripts/script.min.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/vendors/scripts/process.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/vendors/scripts/layout-settings.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/src/plugins/apexcharts/apexcharts.min.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<script src="${pageContext.request.contextPath}/admin/vendors/scripts/dashboard.js"></script>
 </body>
 </html>

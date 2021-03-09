@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
+
 /**
  * The Encoding filter.
  * Changes encoding.
@@ -24,9 +25,10 @@ public class EncodingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String codeRequest = servletRequest.getCharacterEncoding();
+
         if (encoding != null && !encoding.equalsIgnoreCase(codeRequest)) {
             servletRequest.setCharacterEncoding(encoding);
-            servletRequest.setCharacterEncoding(encoding);
+            servletResponse.setCharacterEncoding(encoding);
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }

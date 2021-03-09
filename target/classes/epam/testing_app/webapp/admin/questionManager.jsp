@@ -299,14 +299,38 @@
 </div>
 </div>
 <!-- js -->
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/core.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/script.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/process.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/layout-settings.js"></script>
 <!-- switchery js -->
-<script src="src/plugins/switchery/switchery.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/src/plugins/switchery/switchery.min.js"></script>
 <!-- bootstrap-touchspin js -->
-<script src="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-<script src="vendors/scripts/advanced-components.js"></script>
+<script src="${pageContext.request.contextPath}/admin/src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/advanced-components.js"></script>
+
+<%--Used for pagination--%>
+<script>
+    jQuery( document ).ready(function( $ ) {
+        $('#tableWithPagination').DataTable({
+            scrollCollapse: true,
+            autoWidth: false,
+            responsive: true,
+            searching: false,
+            columnDefs: [{
+                targets: "datatable-nosort",
+                orderable: false,
+            }],
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "language": {
+                "info": "_START_-_END_ of _TOTAL_ entries",
+                paginate: {
+                    next: '<i class="ion-chevron-right"></i>',
+                    previous: '<i class="ion-chevron-left"></i>\n'
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

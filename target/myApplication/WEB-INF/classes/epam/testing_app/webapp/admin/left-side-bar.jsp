@@ -4,8 +4,8 @@
 <div class="left-side-bar">
 	<div class="brand-logo">
 		<a href="${pageContext.request.contextPath}/controller?command=adminPage">
-			<img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-			<img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+			<img src="${pageContext.request.contextPath}/admin/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+			<img src="${pageContext.request.contextPath}/admin/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
 		</a>
 		<div class="close-sidebar" data-toggle="left-sidebar-close">
 			<i class="ion-close-round"></i>

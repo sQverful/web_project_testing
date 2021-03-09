@@ -1,5 +1,5 @@
 $('document').ready(function(){
-	$('.data-table').DataTable({
+	$('#myTable').DataTable({
 		scrollCollapse: true,
 		autoWidth: false,
 		responsive: true,
@@ -15,7 +15,7 @@ $('document').ready(function(){
 				next: '<i class="ion-chevron-right"></i>',
 				previous: '<i class="ion-chevron-left"></i>'  
 			}
-		},
+		}
 	});
 
 	$('.data-table-export').DataTable({

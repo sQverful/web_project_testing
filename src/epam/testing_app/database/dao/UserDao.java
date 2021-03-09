@@ -124,7 +124,6 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // TODO: find the solution
         }
         return res;
     }
@@ -259,19 +258,5 @@ public class UserDao {
         }
     }
 
-    public static void main(String[] args) {
-
-        UserDao userDao = new UserDao();
-
-//       System.out.println(userDao.insertUser(User.createUser("test12", "test", "test",
-//               "test12@test.com", "test", true, 1)));
-        System.out.println(userDao.findAllUsers());
-
-//        System.out.println(userDao.insertUser(User.createUser("admin", "admin", "admin",
-//                "admin@test.com", "admin", false, 2)));
-
-
-
-    }
 }
 

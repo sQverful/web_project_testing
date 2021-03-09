@@ -59,13 +59,11 @@
 </div>
 <!-- Default Basic Forms End -->
 
-</div>
-</div>
-</div>
+
 <!-- js -->
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/core.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/script.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/process.js"></script>
+<script src="${pageContext.request.contextPath}/admin/vendors/scripts/layout-settings.js"></script>
 </body>
 </html>

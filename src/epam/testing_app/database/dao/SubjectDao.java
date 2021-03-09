@@ -324,13 +324,7 @@ public class SubjectDao {
         }
     }
 
-    public static void main(String[] args) {
-        List<Subject> subjects = new SubjectDao().findAllSubjects();
-        System.out.println(subjects);
-        System.out.println(new SubjectDao().findAllAdminDetails());
-        System.out.println(new SubjectDao().getSubjectById(20));
 
-    }
 
 }
 

@@ -6,7 +6,6 @@ import java.sql.Timestamp;
  * User entity.
  *
  * @author V.Dorosh
- *
  */
 public class User extends Entity {
 

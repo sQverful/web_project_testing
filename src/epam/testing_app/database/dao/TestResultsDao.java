@@ -1,14 +1,11 @@
 package epam.testing_app.database.dao;
 
 import epam.testing_app.database.DBManager;
-import epam.testing_app.database.entity.Answer;
 import epam.testing_app.database.entity.TestResult;
 
 import java.sql.*;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
 /**
  * Data access object for TestResult table
@@ -161,13 +158,5 @@ public class TestResultsDao {
             return testResult;
         }
     }
-    public static void main(String[] args) {
-        Timer timer = new Timer();
-        Timestamp timestamp1 = new Timestamp(System.currentTimeMillis());
-        Timestamp timestamp2 = new Timestamp(System.currentTimeMillis() + 50 * 60_000);
 
-        System.out.println(timestamp1);
-        System.out.println(timestamp2);
-        System.out.println(timestamp2.after(timestamp1));
-    }
 }

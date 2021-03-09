@@ -88,7 +88,8 @@
                                                     <h4 class="text-blue h4">Results table</h4>
                                                 </div>
                                                 <div class="pb-20">
-                                                    <table class="data-table table stripe hover nowrap">
+
+                                                    <table class="data-table table stripe hover nowrap table-responsive-xl" id="tableWithPagination">
                                                         <thead>
                                                         <tr>
                                                             <th>№</th>
@@ -113,7 +114,7 @@
                                                                                        scope="page"/>
 
                                                                                 <td>${counter}</td>
-                                                                                <td>${test.subjectId == subject.id ? subject.nameEN : ""}</td>
+                                                                                <td class="table-plus">${test.subjectId == subject.id ? subject.nameEN : ""}</td>
                                                                                 <td>${test.nameEN}</td>
                                                                                 <td>${testResult.createdOn}</td>
                                                                                 <td>${testResult.result}</td>
@@ -130,6 +131,7 @@
                                                         </c:forEach>
                                                         </tbody>
                                                     </table>
+
                                                 </div>
                                             </div>
 
@@ -221,16 +223,48 @@
 			document.getElementById('submitUpdate').disabled = false;
 		} else {
 			document.getElementById('message').style.color = 'red';
-			document.getElementById('message').innerHTML = 'Passwod is not matching!';
+			document.getElementById('message').innerHTML = 'Password is not matching!';
 			document.getElementById('submitUpdate').disabled = true;
 		}
 	}
 </script>
 
+<!-- js -->
 <script src="admin/vendors/scripts/core.js"></script>
 <script src="admin/vendors/scripts/script.min.js"></script>
 <script src="admin/vendors/scripts/process.js"></script>
 <script src="admin/vendors/scripts/layout-settings.js"></script>
-<script src="admin/src/plugins/cropperjs/dist/cropper.js"></script>
+<script src="admin/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="admin/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="admin/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="admin/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+
+
+<%--Used for pagination--%>
+
+<script>
+    jQuery( document ).ready(function( $ ) {
+        $('#tableWithPagination').DataTable({
+            scrollCollapse: true,
+            autoWidth: false,
+            responsive: true,
+            searching: false,
+            columnDefs: [{
+                targets: "datatable-nosort",
+                orderable: false,
+            }],
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "language": {
+                "info": "_START_-_END_ of _TOTAL_ entries",
+                paginate: {
+                    next: '<i class="ion-chevron-right"></i>',
+                    previous: '<i class="ion-chevron-left"></i>\n'
+                }
+            }
+        });
+    });
+
+</script>
+
 </body>
 </html>

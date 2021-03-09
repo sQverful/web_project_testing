@@ -241,11 +241,4 @@ public class QuestionDao {
         }
     }
 
-    public static void main(String[] args) {
-        QuestionDao questionDao = new QuestionDao();
-        Question question = Question.createQuestion("тест", "test", 4);
-        System.out.println(questionDao.findAllQuestionsByTestId(4));
-
-//        System.out.println(questionDao.insertQuestion(question));
-    }
 }

@@ -47,7 +47,6 @@ public class CommandAccessFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             String message = "You do not have permission to access the requested resource";
-            String code = "404";
 
             servletRequest.setAttribute("message", message);
             servletRequest.setAttribute("code", "401");

@@ -160,7 +160,7 @@
                                                     All test results you can find in Profile page
                                                 </div>
                                                 <div class="pb-20">
-                                                    <table class="data-table table stripe hover nowrap">
+                                                    <table class="data-table table stripe hover nowrap" id="tableWithPagination">
                                                         <thead>
                                                         <tr>
                                                             <th>№</th>
@@ -297,6 +297,30 @@
         </script>
     </c:if>
 </c:if>
+
+<%--Used for pagination--%>
+<script>
+    jQuery( document ).ready(function( $ ) {
+        $('#tableWithPagination').DataTable({
+            scrollCollapse: true,
+            autoWidth: false,
+            responsive: true,
+            searching: false,
+            columnDefs: [{
+                targets: "datatable-nosort",
+                orderable: false,
+            }],
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "language": {
+                "info": "_START_-_END_ of _TOTAL_ entries",
+                paginate: {
+                    next: '<i class="ion-chevron-right"></i>',
+                    previous: '<i class="ion-chevron-left"></i>\n'
+                }
+            }
+        });
+    });
+</script>
 <!-- js -->
 <script src="admin/vendors/scripts/core.js"></script>
 <script src="admin/vendors/scripts/script.min.js"></script>

@@ -315,14 +315,6 @@ public class AnswerDao {
         }
     }
 
-    public static void main(String[] args) {
-        Answer answer = Answer.createAnswer("test", "тест", true, 1);
-        AnswerDao answerDao = new AnswerDao();
-        List<Question> questionList = new QuestionDao().findAllQuestionsByTestId(4);
-        System.out.println(questionList);
-        System.out.println(answerDao.getAnswersListByQuestionList(questionList));
-//        System.out.println(answerDao.insertAnswer(answer));
-    }
 
 
 

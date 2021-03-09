@@ -65,6 +65,7 @@ public class Controller extends HttpServlet {
         } else {
             response.sendRedirect(request.getContextPath() + routerPage);
         }
+
 //        log.trace("Forward address --> " + forward);
 
 //        log.debug("Controller finished, now go to forward address --> " + forward);

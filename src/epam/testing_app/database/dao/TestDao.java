@@ -364,20 +364,4 @@ public class TestDao {
     }
 
 
-    public static void main(String[] args) {
-
-        TestDao testDao = new TestDao();
-        System.out.println(testDao.findAllTests());
-
-
-//  //      System.out.println(testDao.insertNewTest(Test.createTest("test", "тест",
-// //               "test", "тест", 4, false, 50, 0, 100)));
-//
-//        Test test = new Test();
-//        test = Test.createTest("trial", "трайл", "trialDesc", "трайлОпис",
-//                4, false, 55, 0, 50);
-//       // System.out.println(testDao.updateSubject(test));
-//        //System.out.println(testDao.getTestByNameEn("трайл"));
-
-    }
 }
