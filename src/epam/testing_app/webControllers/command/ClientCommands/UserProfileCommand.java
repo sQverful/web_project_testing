@@ -25,7 +25,7 @@ public class UserProfileCommand extends Command {
         Router router = new Router();
 
         User currentUser = (User) request.getSession().getAttribute("user");
-        List<TestResult> testResultList = new TestResultsDao().finaAllTestResultsByUserID(currentUser.getId());
+        List<TestResult> testResultList = new TestResultsDao().findAllTestResultsByUserID(currentUser.getId());
         List<Subject> subjectList = new SubjectDao().findAllSubjects();
         List<Test> testsList = new TestDao().findAllTests();
 

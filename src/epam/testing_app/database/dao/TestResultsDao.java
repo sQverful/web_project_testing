@@ -16,7 +16,9 @@ public class TestResultsDao {
 
     private static final String SQL_FIND_ALL_TEST_RESULTS = "SELECT * FROM test_result";
 
-    private static final String SQL_FIND_TEST_RESULT_BY_ID = "SELECT * FROM test_result WHERE user_id=?";
+    private static final String SQL_FIND_TEST_RESULT_BY_ID = "SELECT * FROM test_result WHERE id=?";
+
+    private static final String SQL_FIND_TEST_RESULT_BY_USER_ID = "SELECT * FROM test_result WHERE user_id=?";
 
     private static final String SQL_FIND_ALL_TEST_RESULTS_BY_USER_AND_TEST_ID = "SELECT * FROM test_result WHERE user_id=? AND test_id=?";
 
@@ -56,7 +58,7 @@ public class TestResultsDao {
         return testResult;
     }
 
-    public List<TestResult> finaAllTestResultsByUserID(int userID) {
+    public List<TestResult> findAllTestResultsByUserID(int userID) {
         List<TestResult> testResults = new ArrayList<>();
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -65,7 +67,7 @@ public class TestResultsDao {
 
         try {
             con = DBManager.getInstance().getConnection();
-            pstmt = con.prepareStatement(SQL_FIND_TEST_RESULT_BY_ID);
+            pstmt = con.prepareStatement(SQL_FIND_TEST_RESULT_BY_USER_ID);
             pstmt.setInt(1, userID);
             rs = pstmt.executeQuery();
             while (rs.next()) {
